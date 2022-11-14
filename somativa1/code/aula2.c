@@ -30,14 +30,16 @@ int removeNo(no *p)
 
 void imprime(no *le)
 {
-    no *p = le->proximo;
-    while (p != NULL)
+    no *p;
+    if (p != NULL)
     {
-        printf("%d ->", p->dado);
-        p = p->proximo;
+        for (p = le->proximo; p != NULL; p = p->proximo)
+            printf("%d ->", p->dado);
     }
-
-    printf("NULL");
+    else
+    {
+        printf("NULL");
+    }
 }
 
 no *busca(int valor, no *le)
@@ -55,12 +57,11 @@ int main()
     no *le = malloc(sizeof(no));
     le->proximo = NULL;
 
+    insere(le, 2);
+    insere(le->proximo, 4);
+    insere(le, 5);
+    imprime(le); // [5, 2, 4]
+    removeNo(le->proximo);
     imprime(le);
-    // insere(le, 2);
-    // insere(le->proximo, 4);
-    // insere(le, 5);
-    // imprime(le); // [5, 2, 4]
-    // removeNo(le->proximo);
-    // imprime(le);
     return 0;
 }

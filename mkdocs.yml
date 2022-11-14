@@ -1,0 +1,22 @@
+site_name: EDA2-notes
+
+theme:
+  name: windmill-dark
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - js/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+
+
+nav:
+  - index.md
+  - "Somativa 1":
+      - "Aula 1": aula1.md
+      - "Aula 2": aula2.md
+      - "Aula 3": aula3.md
