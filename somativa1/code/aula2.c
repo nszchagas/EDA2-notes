@@ -62,6 +62,6 @@ int main()
     insere(le, 5);
     imprime(le); // [5, 2, 4]
     removeNo(le->proximo);
-    imprime(le);
+    // imprime(le);
     return 0;
 }

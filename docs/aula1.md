@@ -6,8 +6,6 @@ geometry: left=2cm,right=2cm,top=1cm,bottom=2cm
 output: pdf_document
 ---
 
-## Plano de Ensino
-
 ## Revisando
 
 Uma memória é um arranjado sequencial de espaços de 1 byte endereçados.
