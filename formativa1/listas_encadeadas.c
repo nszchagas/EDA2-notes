@@ -89,35 +89,47 @@ int remove_depois(celula *p)
 void remove_elemento(celula *le, int x)
 {
     celula *noAtual = le;
-    while (noAtual->prox != NULL && noAtual->prox->dado != x)
-        noAtual = noAtual->prox;
-
-    noAtual->prox = noAtual->prox->prox;
-}
-
-void remove_todos_elementos(celula *le, int x)
-{
-    celula *noAtual = le;
     while (noAtual->prox != NULL)
     {
         if (noAtual->prox->dado == x)
-            noAtual->prox = noAtual->prox->prox;
+        {
+            remove_depois(noAtual);
+            return;
+        }
         noAtual = noAtual->prox;
     }
 }
 
-int main()
+void remove_todos_elementos(celula *le, int x)
 {
-    celula *le;
-    le = malloc(sizeof(celula));
-    insere_inicio(le, 5);
-    insere_inicio(le, 7);
-    insere_inicio(le, 5);
-    insere_inicio(le, 8);
-    insere_inicio(le, 5);
-    insere_antes(le, 10, -5);
-    imprime(le);
-    remove_todos_elementos(le, 5);
-    imprime(le);
-    return 0;
+    celula *noAtual = le->prox;
+    celula *prev = le;
+    while (noAtual != NULL)
+    {
+        if (noAtual->dado == x)
+        {
+            prev->prox = noAtual->prox;
+            noAtual = prev->prox;
+        }
+        else
+        {
+            prev = noAtual;
+            noAtual = noAtual->prox;
+        }
+    }
 }
+
+// int main()
+// {
+//     celula *le;
+//     le = malloc(sizeof(celula));
+//     insere_inicio(le, 5);
+//     insere_inicio(le, 1);
+//     insere_inicio(le, 1);
+
+//     imprime(le);
+//     remove_todos_elementos(le, 5);
+//     imprime(le);
+
+//     return 0;
+// }
