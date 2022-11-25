@@ -119,17 +119,36 @@ void remove_todos_elementos(celula *le, int x)
     }
 }
 
-// int main()
-// {
-//     celula *le;
-//     le = malloc(sizeof(celula));
-//     insere_inicio(le, 5);
-//     insere_inicio(le, 1);
-//     insere_inicio(le, 1);
+void remove_todos_elementos_2(celula *le, int x)
+{
+    celula *elem = le;
+    while (elem->prox != NULL)
+    {
+        celula *lixo = elem->prox;
+        if (elem->prox != NULL)
+        {
+            printf("%d\n", lixo->dado);
+            if (lixo->dado == x)
+            {
+                elem->prox = lixo->prox;
+                free(lixo);
+            }
+            elem = elem->prox;
+        }
+    }
+}
 
-//     imprime(le);
-//     remove_todos_elementos(le, 5);
-//     imprime(le);
+int main()
+{
+    celula *le;
+    le = malloc(sizeof(celula));
+    insere_inicio(le, 5);
+    insere_inicio(le, 1);
+    insere_inicio(le, 1);
 
-//     return 0;
-// }
+    imprime(le);
+    remove_todos_elementos_2(le, 5);
+    imprime(le);
+
+    return 0;
+}
