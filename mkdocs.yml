@@ -1,7 +1,11 @@
-site_name: EDA2-notes
+site_name: Estruturas de Dados e Algoritmos
 
 theme:
   name: material
+  logo: _static/icon.png
+  features:
+    - content.code.annotate
+  favicon: _static/icon.png
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -20,6 +24,15 @@ theme:
 markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 extra_javascript:
   - js/mathjax.js
@@ -28,7 +41,7 @@ extra_javascript:
 
 nav:
   - index.md
-  - Ponteiros: ponteiros.md
+  - Endereços e Ponteiros: ponteiros.md
   - Listas Encadeadas: listas_encadeadas.md
   - Ordenação - Seleção: ordenacao.md
   - Ordenação - Merge Sort: mergesort.md
