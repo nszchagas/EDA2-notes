@@ -27,6 +27,26 @@ static void intercala(int *v, int e, int meio, int d)
     free(aux);
 }
 
+int *intercala_disjuntos(int *x, int *y, int sx, int sy)
+{
+    int *aux = malloc((sx + sy) * sizeof(int));
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    while (i < sx && j < sy)
+    {
+        if (x[i] <= y[j])
+            aux[k++] = x[i++];
+        else
+            aux[k++] = y[j++];
+    }
+    while (i < sx)
+        aux[k++] = x[i++];
+    while (j < sy)
+        aux[k++] = y[j++];
+    return aux;
+}
+
 void merge_sort(int *v, int e, int d)
 {
     if (e >= d)
@@ -49,9 +69,20 @@ void print_vetor(int *v, int size)
 int main()
 {
     int v[] = {-1, 10, -7, -50, 210};
+    int w[] = {2, 5, 10, 20};
+
     int tamanho = 5;
+    int tamanhow = 4;
+
     print_vetor(v, tamanho);
-    merge_sort(v, 0, tamanho - 1);
+    intercala(v, 0, 0, 0);
+    // merge_sort(v, 0, tamanho - 1);
     print_vetor(v, tamanho);
+    int *t = malloc((tamanho + tamanhow) * sizeof(int));
+
+    t = intercala_disjuntos(v, w, tamanho, tamanhow);
+
+    print_vetor(t, tamanho + tamanhow);
+
     return 0;
 }

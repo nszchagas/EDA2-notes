@@ -28,9 +28,9 @@ extra_javascript:
 
 nav:
   - index.md
-  - "Ponteiros": ponteiros.md
-  - "Listas Encadeadas": listas_encadeadas.md
-  - "Ordenação: Seleção": ordenacao.md
-  - "Ordenação: Merge Sort": mergesort.md
-  - Implementação: 
-    - Listas encadeadas: implementacao/listas_encadeadas.md
+  - Ponteiros: ponteiros.md
+  - Listas Encadeadas: listas_encadeadas.md
+  - Ordenação - Seleção: ordenacao.md
+  - Ordenação - Merge Sort: mergesort.md
+  - Implementação:
+      - Listas encadeadas: implementacao/listas_encadeadas.md

@@ -127,7 +127,6 @@ void remove_todos_elementos_2(celula *le, int x)
         celula *lixo = elem->prox;
         if (elem->prox != NULL)
         {
-            printf("%d\n", lixo->dado);
             if (lixo->dado == x)
             {
                 elem->prox = lixo->prox;
