@@ -139,7 +139,8 @@ Exemplo em código:
 
 ```c
     int tamanho = 10;
-    int *v = malloc(tamanho * sizeof(int)); // Alocamos 10 posições consecutivas na memória para . 
+    int *v = malloc(tamanho * sizeof(int)); 
+    // Alocamos 10 posições consecutivas na memória para v. 
 
     for (int i = 0; i < tamanho; i++)
     {
