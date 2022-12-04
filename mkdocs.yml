@@ -1,7 +1,21 @@
 site_name: EDA2-notes
 
 theme:
-  name: windmill-dark
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      toggle:
+        icon: material/brightness-7
+        name: Dark mode
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Light mode
 
 markdown_extensions:
   - pymdownx.arithmatex:
@@ -12,11 +26,11 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
-
-
 nav:
   - index.md
-  - "Somativa 1":
-      - "Aula 1": aula1.md
-      - "Aula 2": aula2.md
-      - "Aula 3": aula3.md
+  - "Ponteiros": ponteiros.md
+  - "Listas Encadeadas": listas_encadeadas.md
+  - "Ordenação: Seleção": ordenacao.md
+  - "Ordenação: Merge Sort": mergesort.md
+  - Implementação: 
+    - Listas encadeadas: implementacao/listas_encadeadas.md

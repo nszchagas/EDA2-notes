@@ -1,11 +1,3 @@
----
-title: EDA1 - Aula 1
-author: "Nicolas Chagas Souza"
-date: 31/10/2022
-geometry: left=2cm,right=2cm,top=1cm,bottom=2cm
-output: pdf_document
----
-
 ## Revisando
 
 Uma memória é um arranjado sequencial de espaços de 1 byte endereçados.
