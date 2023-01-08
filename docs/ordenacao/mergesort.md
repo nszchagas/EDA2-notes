@@ -39,16 +39,16 @@ static void intercala(int *v, int e, int meio, int d)
 
 ## MergeSort
 
-O algoritmo Merge Sorte parte da premissa de dividir e conquistar, o vetor é dividido em subvetores, a partir do elemento central, iterativamente, cada metade é ordenada e intercalada. O algoritmo executa recursivamente até atingir o caso base, onde o elemento da esquerda possui um índice maior ou igual ao índice do elemento da direita, ou seja, até o caso em que o subvetor resultante possua tamanho 0 ou 1.
+O algoritmo mergesort parte da premissa de dividir e conquistar, o vetor é dividido em subvetores, a partir do elemento central, iterativamente, cada metade é ordenada e intercalada. O algoritmo executa recursivamente até atingir o caso base, onde o elemento da esquerda possui um índice maior ou igual ao índice do elemento da direita, ou seja, até o caso em que o subvetor resultante possua tamanho 0 ou 1.
 
 ```c
-void merge_sort(int *v, int e, int d)
+void mergesort(int *v, int e, int d)
 {
     if (e >= d)
         return;
     int meio = (e + d) / 2;
-    merge_sort(v, e, meio);
-    merge_sort(v, meio + 1, d);
+    mergesort(v, e, meio);
+    mergesort(v, meio + 1, d);
     intercala(v, e, meio, d);
 }
 
@@ -56,4 +56,4 @@ void merge_sort(int *v, int e, int d)
 
 O custo de intercalar $n$ elementos é $O(n)$. A árvore de recursão possui $log\ n$ níveis, em que $n$ é a quantidade de elementos do vetor. O custo de intercalar todos os elementos em um nível é de $O(n)$.
 
-> O custo do algoritmo Merge Sorte é: $O(n\cdot log\ n)$.
+> O custo do algoritmo mergesort é: $O(n\cdot log\ n)$.

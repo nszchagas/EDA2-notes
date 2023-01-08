@@ -75,8 +75,8 @@ int main()
     int tamanhow = 4;
 
     print_vetor(v, tamanho);
-    intercala(v, 0, 0, 0);
-    // merge_sort(v, 0, tamanho - 1);
+    // intercala(v, 0, 0, 0);
+    merge_sort(v, 0, tamanho - 1);
     print_vetor(v, tamanho);
     int *t = malloc((tamanho + tamanhow) * sizeof(int));
 

@@ -1,4 +1,7 @@
 site_name: Estruturas de Dados e Algoritmos
+copyright: 2022 Nicolas Souza
+repo_name: EDA2-notes
+repo_url: https://github.com/nszchagas/EDA2-notes
 
 theme:
   name: material
@@ -43,7 +46,9 @@ nav:
   - index.md
   - Endereços e Ponteiros: ponteiros.md
   - Listas Encadeadas: listas_encadeadas.md
-  - Ordenação - Seleção: ordenacao.md
-  - Ordenação - Merge Sort: mergesort.md
+  - Ordenação:
+      - Seleção: ordenacao/selecao.md
+      - Mergesort: ordenacao/mergesort.md
+      - Quicksort: ordenacao/quicksort.md
   - Implementação:
       - Listas encadeadas: implementacao/listas_encadeadas.md
