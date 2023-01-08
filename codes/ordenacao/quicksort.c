@@ -54,10 +54,29 @@ int particiona_not_optimized(int *v, int e, int d)
     return pos;
 }
 
+void swap(int *array, int index1, int index2)
+{
+    int temp = array[index1];
+    array[index1] = array[index2];
+    array[index2] = temp;
+}
+
+void median(int *v, int l, int r)
+{
+    int m = (r + l) / 2;
+    if (v[l] <= v[m] && v[l] >= v[r] || v[l] >= v[m] && v[l] <= v[r])
+        swap(v, l, r);
+    if (v[r] <= v[m] && v[r] >= v[l] || v[r] >= v[m] && v[r] <= v[l])
+        return; // already in right position
+    if (v[m] <= v[r] && v[m] >= v[l] || v[m] >= v[r] && v[m] <= v[l])
+        swap(v, m, r);
+}
+
 void quicksort(int *v, int e, int d)
 {
     if (d <= e)
         return;
+        median(v, e, d);
     int j = particiona(v, e, d); // v[j] é chamado de pivô
     quicksort(v, e, j - 1);
     quicksort(v, j + 1, d);
@@ -75,19 +94,12 @@ void print_vetor(int *v, int size)
 
 int main()
 {
-    int v[] = {50, 7, -5, 87, 4};
+    int v[] = {50, 7, 52, 87, 54};
 
     int tamanho = 5;
     print_vetor(v, tamanho);
-    // int j = particiona_not_optimized(v, 0, tamanho - 1);
     quicksort(v, 0, tamanho - 1);
     print_vetor(v, tamanho);
-
-    // printf("%d %d\n", j, k);
-
-    // print_vetor(v, tamanho);
-    // merge_sort(v, 0, tamanho - 1);
-    // print_vetor(v, tamanho);
 
     return 0;
 }
