@@ -44,8 +44,10 @@ extra_javascript:
 
 nav:
   - index.md
-  - Endereços e Ponteiros: ponteiros.md
-  - Listas Encadeadas: listas_encadeadas.md
+  - Estruturas:
+      - Endereços e Ponteiros: ponteiros.md
+      - Listas Encadeadas: listas_encadeadas.md
+      - Árvores: arvores.md
   - Ordenação:
       - Seleção: ordenacao/selecao.md
       - Mergesort: ordenacao/mergesort.md

@@ -20,6 +20,8 @@ Os algoritmos quicksort, mergesort e heapsort possuem complexidade $O(n\cdot log
 - Mergesort
 - Heapsort
 
+> A ordenação, utilizando algoritmos linearítimicos, compensa para uma grande quantidade de buscas (muito mais que n buscas), compensa. Ordenar e buscar tem custo $O(n\cdot log n + log n)$.
+
 Os algoritmos shell, contagem e distribuição possuem complexidade $O(n)$. Esses três algoritmos partem de alguma premissa em relação aos dados a serem ordenados.
 
 - Shell
