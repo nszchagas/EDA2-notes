@@ -45,6 +45,10 @@ void erd (arvore r){
 
 As demais varreduras são semelhantes, trocando-se a ordem da recursão.
 
+## Igualdade
+
+Duas árvores são iguais se possuírem os mesmos dados e mesma estrutura. Árvores com os mesmos dados, mas estruturas diferentes, são ditas isomorfas.
+
 ## Implementação
 
 A implementação pode ser feita por meio de listas encadeadas ou vetores.
@@ -53,9 +57,18 @@ A implementação pode ser feita por meio de listas encadeadas ou vetores.
 
 Cada nó tem a forma:
 
+Obs: Item é um tipo qualquer, que pode ser definido das formas a seguir:
+A definição de Item por macro permite a alteração do tipo em tempo de compilação, com a flag:
+
+```shell
+    gcc -o  a.out -DItem=float a.c
+```
+
 ```c
+typedef int Item // ou: #define Item int 
+
 typedef struct no {
-    int dado;
+    Item dado;
     struct no *esq, *dir;
 } no;
 ```

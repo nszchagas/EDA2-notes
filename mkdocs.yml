@@ -48,6 +48,7 @@ nav:
       - Endereços e Ponteiros: ponteiros.md
       - Listas Encadeadas: listas_encadeadas.md
       - Árvores: arvores.md
+      - Árvore Binária de Busca: arvore_binaria.md
   - Ordenação:
       - Seleção: ordenacao/selecao.md
       - Mergesort: ordenacao/mergesort.md
