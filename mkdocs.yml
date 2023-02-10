@@ -49,6 +49,7 @@ nav:
       - Listas Encadeadas: listas_encadeadas.md
       - Árvores: arvores.md
       - Árvore Binária de Busca: arvore_binaria.md
+      - Grafos: grafos.md
   - Ordenação:
       - Seleção: ordenacao/selecao.md
       - Mergesort: ordenacao/mergesort.md

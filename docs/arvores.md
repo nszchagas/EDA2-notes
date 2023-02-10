@@ -77,6 +77,6 @@ typedef struct no {
 
 ### Vetor
 
-Se a raiz está na posição i, o filho esquerdo está na posição `2*i + 1` e o filho direito na posição `2*i+2`. Observe que como uma árvore binária de com `k` níveis tem, no máximo `2^k` nós, sabendo a altura da ávore é possível alocar o tamanho certo do vetor.
+Se a raiz está na posição i, o filho esquerdo está na posição `2*i + 1` e o filho direito na posição `2*i+2`. Observe que como uma árvore binária de com `k` níveis tem, no máximo `2^k` nós, sabendo a altura da árvore é possível alocar o tamanho certo do vetor.
 
 A inserção no vetor é mais trabalhosa e pode exigir redimensionamento.
