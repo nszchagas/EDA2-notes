@@ -1,10 +1,10 @@
 # Árvores
 
-Uma árvore é um conjunto de elementos interligados entre si de forma que um elemento é a **raiz** e os demais se dividem em $n>=0$, subconjuntos disjuntos chamados subárvores.
+Uma árvore é um conjunto de elementos interligados entre si de forma que um elemento é a **raiz** e os demais se dividem em $n\geq0$, subconjuntos disjuntos chamados subárvores.
 
 Os elementos da árvore são chamados de **nós** e as ligações entre eles são chamadas de **arestas**. O nó que não possui pai é dito **nó raiz** e os nós sem filhos são ditos **folhas**. O **grau** de um nó é a quantidade de subárvores que se originam dele.
 
-Se uma árvore for tal que $grau(n)<=2  \forall n \in Árvore$, então dizemos que ela é uma árvore binária.
+Se uma árvore for tal que $grau(n)\leq2\ \forall\ n\ \in\ Árvore$, então dizemos que ela é uma árvore binária.
 
 Níveis são "gerações" de nós na árvore, e a **altura** de uma árvore é o seu maior nível. Em uma árvore binária, um nível $k$ pode ter no máximo $2^k$ nós. O crescimento dos nós, conforme aumentamos o nível, é exponencial.
 
@@ -24,12 +24,12 @@ O  máximo de nós numa árvore de altura $h$ é: $2^0+2^1+...+2^h = 2^{k+1}-1$,
 2. A raiz
 3. A subárvore direita da raiz, em ordem e-r-d
 
-![](assets/arvores_17_23_57.png)
-<div style="text-align: center">
-<p>
+<center>
+
+![](../assets/arvores_17_23_57.png)
+
 Figura 1: Ordem de visitação dos nós. Fonte: [1]
-</p>
-</div>
+</center>
 
 Implementação:
 

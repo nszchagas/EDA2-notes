@@ -20,8 +20,8 @@ output: pdf_document
 - Linearítmico / quase linear: $f(n) = n \cdot log\ n$
 - Polinomial: $ f(n)=n^k,\ k\geq2 $
 - Exponenciais:
-  - $ f(n)=k^n , k \geq 2 $
-  - $ f(n)=n^n, n! $
+  - $f(n)=k^n , k \geq 2$
+  - $f(n)=n^n, n!$
 
 Exemplo:
 
@@ -71,7 +71,7 @@ Comparativos entre listas e vetores
 
 A lista será composta pelo encadeamento de nós (ou células), compostas por um dado e um apontador para o próximo nó. Todos os elementos devem ser do mesmo tipo.
 
-![](imgs/16-59-54.png)
+![](../assets/listas_encadeadas_16_59_54.png)
 
 ```c
     typedef struct no {
@@ -152,4 +152,4 @@ void printList(no *le)
 
 ### Referência
 
-[Site do IME/USP](https://www.ime.usp.br/~pf/algoritmos/aulas/lista.html)
+[1] Material sobre Listas Encadeadas, do Professor Paulo Feofiloff, disponível no [link](https://www.ime.usp.br/~pf/algoritmos/aulas/lista.html).

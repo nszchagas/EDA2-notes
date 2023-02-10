@@ -44,15 +44,18 @@ extra_javascript:
 
 nav:
   - index.md
-  - Estruturas:
-      - Endereços e Ponteiros: ponteiros.md
-      - Listas Encadeadas: listas_encadeadas.md
-      - Árvores: arvores.md
-      - Árvore Binária de Busca: arvore_binaria.md
-      - Grafos: grafos.md
+  - Endereços e Ponteiros: resumos/ponteiros.md
+  - Listas Encadeadas: resumos/listas_encadeadas.md
   - Ordenação:
       - Seleção: ordenacao/selecao.md
       - Mergesort: ordenacao/mergesort.md
       - Quicksort: ordenacao/quicksort.md
-  - Implementação:
+  - Hash: resumos/hash.md
+  - Árvores: resumos/arvores.md
+  - Árvore Binária de Busca: resumos/arvore_binaria_busca.md
+  - Grafos: resumos/grafos.md
+  - Fila de prioridade: resumos/fila_de_prioridade.md
+  - Implementação em C:
       - Listas encadeadas: implementacao/listas_encadeadas.md
+      - Árvores binárias: implementacao/arvores_binarias.md
+      - Árvores binárias de busca: implementacao/arvores_binarias_de_busca.md

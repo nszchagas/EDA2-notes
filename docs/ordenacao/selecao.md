@@ -1,10 +1,4 @@
----
-title: EDA2 - Aula 3
-author: "Nicolas Chagas Souza"
-date: 07/11/2022
-geometry: left=2cm,right=2cm,top=1cm,bottom=2cm
-output: pdf_document
----
+# Seleção
 
 ## Overview
 
@@ -59,14 +53,14 @@ O melhor caso ocorre quando o elemento retirado é maior que o antecessor (vetor
 
 Caso médio: $O(n^2)$
 
-### Implementação
+<!-- ### Implementação
 
 ```c
 void insercao(int *v, int n){
 
 }
 
-```
+``` -->
 
 ## Ordenação por seleção
 

@@ -1,4 +1,4 @@
-# Ordenação - Merge Sort
+# MergeSort
 
 ## Intercalação de vetores ordenados
 
