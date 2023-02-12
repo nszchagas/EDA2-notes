@@ -10,42 +10,17 @@ Níveis são "gerações" de nós na árvore, e a **altura** de uma árvore é o
 
 O  máximo de nós numa árvore de altura $h$ é: $2^0+2^1+...+2^h = 2^{k+1}-1$, pela soma dos termos da PG de razão 2.
 
-## Varredura
+## Propriedades
 
-Árvores são estruturas de dados não lineares, pois há várias formas distintas de percorrer seus elementos. As três formas padrão são:
-
-- Em ordem (esquerda-raiz-direita)
-- Pré-ordem (raiz-esquerda-direita)
-- Pós-ordem (esquerda-direita-raiz)
-
-Por exemplo, o algoritmo para a varredura **em ordem** visita:
-
-1. A subárvore esquerda da raiz, em ordem e-r-d
-2. A raiz
-3. A subárvore direita da raiz, em ordem e-r-d
-
-A implementação pode ser feita por meio da recursão (Código 1).
+Uma árvore de altura $h$ tem no mínimo $h$ e no máximo $2^h-1$ nós.
 
 <center>
+![](/assets/arvores_binarias_14_57_03.png)
 
-![](../assets/arvores_17_23_57.png)
+Figura 1: Árvores de altura 3 com o mínimo e máximo de nós. Fonte: [1]
+ </center>
 
-Figura 1: Ordem de visitação dos nós na varredura em ordem. Fonte: [1]
-</center>
-
-```
- varredura-em-ordem(r)
- if r != NIL
-   varredura-em-ordem(r.esquerda)
-   print r.chave
-   varredura-em-ordem(r.direita)
-```
-
-<center>
-
-:octicons-code-24: Código 1: Varredura em ordem. Fonte: [2]
-
-</center>
+Se a árvore tem $n\geq1$ nós, então a altura é no mínimo $\lfloor log_2(n+1) \rfloor$, quando a árvore é completa, e no máximo $n$, quando cada nó não-terminal tem apenas um filho.
 
 ## Igualdade
 
@@ -57,7 +32,13 @@ A implementação pode ser feita por meio de listas encadeadas ou vetores, ambas
 
 ### Listas Encadeadas
 
-Cada nó da lista encadeada possui a estrutura apresentada no trecho de Código 2.
+Cada nó da lista encadeada (Figura 2) possui a estrutura apresentada no trecho de Código 2.
+
+<center>
+![](/assets/arvores_binarias_15_00_32.png)
+
+Figura 2: Implementação de árvore utilizando lista encadeada. Fonte: [1]
+ </center>
 
 ```c
 #define Item int
@@ -89,10 +70,10 @@ Observe que como uma árvore binária de com `k` níveis tem, no máximo `2^k` n
 <center>
 ![](/assets/arvores_12_31_11.png)
 
-Figura 2: Exemplo de árvore (binária de busca). Fonte: [2]
+Figura 3: Exemplo de árvore (binária de busca). Fonte: [2]
  </center>
 
-A árvore da Figura 2 ocuparia o vetor `v` da maneira representada a seguir, onde `-1` indica posições desocupadas do vetor.
+A árvore da Figura 3 ocuparia o vetor `v` da maneira representada a seguir, onde `-1` indica posições desocupadas do vetor.
 
 ```c
 // Posição:       0  1  2  3  4  5  6  7
@@ -132,6 +113,81 @@ void init_tree(p_tree tree, int height)
         tree->content[i] = -1;
 }
 ```
+
+## Varredura
+
+Árvores são estruturas de dados não lineares, pois há várias formas distintas de percorrer seus elementos. As três formas padrão são:
+
+- Em ordem (esquerda-raiz-direita)
+- Pré-ordem (raiz-esquerda-direita)
+- Pós-ordem (esquerda-direita-raiz)
+
+### Pós ordem
+
+O algoritmo para a varredura **pós ordem** visita:
+
+1. A subárvore esquerda da raiz, em ordem e-d-r
+2. A subárvore direita da raiz, em ordem e-d-r
+3. A raiz
+
+<center>
+![](/assets/arvores_binarias_15_09_18.png)
+
+Figura 4: Ordem de visitação dos nós em pós-ordem. Fonte: [1]
+</center>
+
+### Pré ordem
+
+O algoritmo para a varredura **pré ordem** visita:
+
+1. A raiz
+2. A subárvore esquerda da raiz, em ordem r-e-d
+3. A subárvore direita da raiz, em ordem r-e-d
+
+<center>
+![](/assets/arvores_binarias_15_09_40.png)
+
+Figura 5: Ordem de visitação dos nós em pré-ordem. Fonte: [1]
+</center>
+
+### Em ordem
+
+O algoritmo para a varredura **em ordem** visita:
+
+1. A subárvore esquerda da raiz, em ordem e-r-d
+2. A raiz
+3. A subárvore direita da raiz, em ordem e-r-d
+
+A implementação pode ser feita por meio da recursão (Código 1).
+
+<center>
+![](/assets/arvores_binarias_15_08_43.png)
+
+Figura 6: Ordem de visitação dos nós em ordem. Fonte: [1]
+</center>
+
+```title="Pseudo código - varredura em ordem" linenums="1"
+ varredura-em-ordem(r)
+ if r != NIL
+   varredura-em-ordem(r.esquerda)
+   print r.chave
+   varredura-em-ordem(r.direita)
+```
+
+<center>
+
+:octicons-code-24: Código 1: Varredura em ordem. Fonte: [2]
+
+</center>
+
+### Em largura
+
+O percurso em largura visita os nós por níveis, da esquerda para a direita.
+<center>
+![](/assets/arvores_binarias_15_34_19.png)
+
+Figura 7: Percurso em Largura. Fonte: [1]
+</center>
 
 ## Referências
 
