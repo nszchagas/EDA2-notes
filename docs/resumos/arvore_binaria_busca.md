@@ -1,5 +1,27 @@
 # Árvore Binária de Busca
 
+## Motivação
+
+As operações de inserção, remoção e busca em estruturas de dados costumam ter custos complementares, proveniente de um *tradeoff* na hora de implementação.
+
+<center>
+
+| Operação | Lista Duplamente Encadeada | Vetor Não Ordenado | Vetor Ordenado | Árvore Binária de Busca |
+| :-: | :-: | :-: | :-: | :-: |
+| Inserção e Remoção |  $O(1)$ | :material-sticker-alert-outline: $O(1)$  | $O(n)$ | $O(log\ n)$
+| Busca | $O(n)$ | $O(n)$ |  $O(n\cdot log\ n)$ | $O(log\ n)$
+
+<div style="text-align: center">
+<p>
+Tabela 1: Custo das Operações. Fonte: [1]
+</p>
+</div>
+</center>
+
+:material-sticker-alert-outline: A inserção e remoção em vetores não ordenados pode ter custo $O(1)$ ao inserir sempre no final e remover fazendo a troca com a última posição.
+
+As Árvores Binárias de Busca, na sua versão mais sofisticada, oferecem operações de inserção, remoção e busca com custo $O(log\ n)$.
+
 ## Definição
 
 Uma árvore binária tal que cada nó $r$ com subárvores esquerda $T_e$ e direita $T_d$ satisfaz:
@@ -17,8 +39,6 @@ Figura 1: Exemplo de árvore binária de busca. Fonte: [1]
 </p>
 </div>
 
-
-
 ## Propriedades
 
 Uma árvore binária de busca satisfaz a seguinte propriedade:
@@ -29,19 +49,15 @@ No exemplo da Figura 1, o percurso em ordem gera a seguinte saída: `1, 3, 4, 5,
 
 O percurso em ordem é feito da seguinte maneira:
 
-```c
-void percurso_em_ordem(no r){
-    if (r == NULL)
-        return;
-    percurso_em_ordem(r->esq);
-    printf("%d\n", r->dado);
-    percurso_em_ordem(r->dir);
-}
+```c title="in_ordem.c" linenums="1"
+--8<--
+arvore/arvore.c:inordem
+--8<--
 ```
 
 A complexidade do algoritmo de percurso em ordem é $O(n)$, onde $n$ é a quantidade de nós de uma árvore, uma vez que o função é executada $2\cdot n$ vezes.
 
-## Operações - Listas Encadeadas
+## Operações
 
 ### Busca
 
@@ -136,12 +152,6 @@ no *minimo_iterativo(no *raiz) {
 
 > O algoritmo para achar o máximo é simétrico.
 
-## Operações - Vetores
+## Referências
 
-### Busca
-
-### Inserção
-
-### Mínimo
-
-<https://www.ic.unicamp.br/~rafael/cursos/2s2018/mc202/slides/unidade18-arvore-de-busca.pdf>
+[1] <https://www.ic.unicamp.br/~rafael/cursos/2s2019/mc202/slides/unidade18-arvores-busca-handout.pdf>
