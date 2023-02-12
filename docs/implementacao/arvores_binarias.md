@@ -71,3 +71,31 @@ arvore/arvore.c:inordem
 arvore/arvore.c:emlargura
 --8<--
 ```
+
+### Percursos
+
+#### Recursivamente
+
+```c title="preordem.c" linenums="1"
+--8<--
+arvore/listas/arvore.c:preordem
+--8<--
+```
+
+```c title="posordem.c" linenums="1"
+--8<--
+arvore/listas/arvore.c:posordem
+--8<--
+```
+
+```c title="em_ordem.c" linenums="1"
+--8<--
+arvore/listas/arvore.c:inordem
+--8<--
+```
+
+```c title="em_largura.c" linenums="1"
+--8<--
+arvore/listas/arvore.c:emlargura
+--8<--
+```

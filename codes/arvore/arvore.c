@@ -9,6 +9,7 @@ typedef struct No
     struct No *esq, *dir;
 } No;
 typedef No *p_no;
+typedef No *p_fila;
 
 p_no criar_arvore(int dado, p_no esq, p_no dir);
 
