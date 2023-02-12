@@ -51,11 +51,10 @@ nav:
       - Mergesort: ordenacao/mergesort.md
       - Quicksort: ordenacao/quicksort.md
   - Hash: resumos/hash.md
-  - Árvores: resumos/arvores.md
-  - Árvore Binária de Busca: resumos/arvore_binaria_busca.md
+  - Árvores Binárias: resumos/arvores.md
+  - Árvores Binárias de Busca: resumos/arvore_binaria_busca.md
   - Grafos: resumos/grafos.md
   - Fila de prioridade: resumos/fila_de_prioridade.md
   - Implementação em C:
       - Listas encadeadas: implementacao/listas_encadeadas.md
-      - Árvores binárias: implementacao/arvores_binarias.md
       - Árvores binárias de busca: implementacao/arvores_binarias_de_busca.md
