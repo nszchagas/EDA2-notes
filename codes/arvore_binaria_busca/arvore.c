@@ -9,6 +9,8 @@ typedef struct
     int size;
 } tree;
 
+
+
 typedef tree *p_tree;
 
 #define PAI(n) ((int)n / 2)

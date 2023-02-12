@@ -1,13 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/queue.h>
 
+// --8<-- [start:header]
 typedef struct No
 {
     int dado;
     struct No *esq, *dir;
 } No;
-
 typedef No *p_no;
+
+p_no criar_arvore(int dado, p_no esq, p_no dir);
+
+p_no procurar_no(p_no raiz, int valor);
+int numero_nos(p_no raiz);
+int altura(p_no raiz);
+
+// Percursos
+void pre_ordem(p_no raiz);
+void pos_ordem(p_no raiz);
+void in_ordem(p_no raiz);
+void em_largura(p_no raiz);
+
+// --8<-- [end:header]
+
+typedef No *p_fila;
 
 void print_arvore(p_no raiz)
 {
@@ -26,7 +43,7 @@ void print_arvore(p_no raiz)
 // Cria um nó na árvore, com dado e filhos esquerdo e direito.
 p_no criar_arvore(int dado, p_no esq, p_no dir)
 {
-    p_no raiz = malloc(sizeof(No));
+    p_no raiz = malloc(sizeof(p_no));
     raiz->dado = dado;
     raiz->esq = esq;
     raiz->dir = dir;
@@ -71,6 +88,67 @@ int altura(p_no raiz)
 }
 // --8<-- [end:altura]
 
+// --8<-- [start:preordem]
+// Pré ordem visita os nós na ordem: raiz, esquerda, direita.
+void pre_ordem(p_no raiz)
+{
+    if (raiz != NULL)
+    {
+        printf("%d ", raiz->dado);
+        pre_ordem(raiz->esq);
+        pre_ordem(raiz->dir);
+    }
+}
+// --8<-- [end:preordem]
+
+// --8<-- [start:posordem]
+// Pós ordem visita os nós na ordem: esquerda, direita, raiz.
+void pos_ordem(p_no raiz)
+{
+    if (raiz != NULL)
+    {
+        pos_ordem(raiz->esq);
+        pos_ordem(raiz->dir);
+        printf("%d ", raiz->dado);
+    }
+}
+// --8<-- [end:posordem]
+
+// --8<-- [start:inordem]
+// Em ordem visita os nós na ordem: esquerda, raiz, direita.
+void in_ordem(p_no raiz)
+{
+    if (raiz != NULL)
+    {
+        in_ordem(raiz->esq);
+        printf("%d ", raiz->dado);
+        in_ordem(raiz->dir);
+    }
+}
+// --8<-- [end:inordem]
+
+// @TODO: implementar filas para em_largura
+// --8<-- [start:emlargura]
+// Em largura visita os nós, por nível, da esquerda pra direita.
+void em_largura(p_no raiz)
+{
+    p_fila f;
+    f = criar_fila();
+    enfileirar(f, raiz);
+    while (!fila_vazia(f))
+    {
+        raiz = desenfileirar(f);
+        if (raiz != NULL)
+        {
+            enfileirar(f, raiz->esq);
+            enfileirar(f, raiz->dir);
+            printf("%d ", raiz->dado); /*visita raiz*/
+        }
+    }
+    destruir_fila(f);
+}
+// --8<-- [end:emlargura]
+
 int main()
 {
     p_no raiz;
@@ -83,7 +161,7 @@ int main()
     n22 = criar_arvore(5, NULL, n34);
     n24 = criar_arvore(8, NULL, n38);
 
-    n11 = criar_arvore(5, n21, n22);
+    n11 = criar_arvore(12, n21, n22);
     n12 = criar_arvore(7, NULL, n24);
 
     raiz = criar_arvore(6, n11, n12);
@@ -93,6 +171,17 @@ int main()
     printf("----- Árvore inserida ----- \n\nEstrutura: nó (esq, dir)\n\n");
 
     print_arvore(raiz);
+
+    printf("\n\n--------  Percursos  --------\n");
+    printf("\nPré ordem: ");
+    pre_ordem(raiz);
+    printf("\nEm ordem: ");
+    in_ordem(raiz);
+    printf("\nPós ordem: ");
+    pos_ordem(raiz);
+    printf("\nEm largura: ");
+    em_largura(raiz);
+
     printf("\n\n---------  SPECS  ---------\n\nAltura: %d\nQuantidade de nós:%d\n\n", altura(raiz), numero_nos(raiz));
     printf("---------------------------");
     return 0;

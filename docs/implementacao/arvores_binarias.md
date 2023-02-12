@@ -4,9 +4,9 @@
 
 ### Header
 
-```c title="arvores.h" linenums="1"
+```c title="arvores.c" linenums="1"
 --8<--
-arvore/listas/arvore.h
+arvore/arvore.c:header
 --8<--
 ```
 
@@ -16,7 +16,7 @@ A criação da árvore será das folhas para a raiz, criando-se a árvore esquer
 
 ```c title="criar_arvore.c" linenums="1"
 --8<--
-arvore/listas/arvore.c:criar
+arvore/arvore.c:criar
 --8<--
 ```
 
@@ -24,7 +24,7 @@ arvore/listas/arvore.c:criar
 
 ```c title="procurar_no.c" linenums="1"
 --8<--
-arvore/listas/arvore.c:procurar
+arvore/arvore.c:procurar
 --8<--
 ```
 
@@ -32,7 +32,7 @@ arvore/listas/arvore.c:procurar
 
 ```c title="numero_nos.c" linenums="1"
 --8<--
-arvore/listas/arvore.c:numero
+arvore/arvore.c:numero
 --8<--
 ```
 
@@ -40,6 +40,34 @@ arvore/listas/arvore.c:numero
 
 ```c title="altura.c" linenums="1"
 --8<--
-arvore/listas/arvore.c:altura 
+arvore/arvore.c:altura 
+--8<--
+```
+
+### Percursos
+
+#### Recursivamente
+
+```c title="preordem.c" linenums="1"
+--8<--
+arvore/arvore.c:preordem
+--8<--
+```
+
+```c title="posordem.c" linenums="1"
+--8<--
+arvore/arvore.c:posordem
+--8<--
+```
+
+```c title="em_ordem.c" linenums="1"
+--8<--
+arvore/arvore.c:inordem
+--8<--
+```
+
+```c title="em_largura.c" linenums="1"
+--8<--
+arvore/arvore.c:emlargura
 --8<--
 ```
