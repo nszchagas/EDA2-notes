@@ -1,5 +1,15 @@
 # Grafos
 
+Königsberg (hoje Kaliningrado, Rússia) tinha 7 pontes e acreditava-se que era possível passear por toda a cidade atravessando cada ponte exatamente uma vez.
+
+<center>
+![](/assets/estrutura_14_32_11.png)
+
+Figura 1: Motivação. Fonte: [1]
+</center>
+
+Leonhard Euler, em 1736, modelou o problema como um grafo, provou que tal passeio não é possível e fundou a teoria dos grafos.
+
 ## Definição
 
 Um **grafo** é um conjunto de objetos ligados, por **arestas**, entre si, chamados de **vértices**.
@@ -9,7 +19,7 @@ Um **grafo** é um conjunto de objetos ligados, por **arestas**, entre si, chama
 ![](../assets/grafos_16_19_53.png)
 <div style="text-align: center">
 <p>
-Figura 1: Representação de um Grafo. Fonte:[1]
+Figura 2: Representação de um Grafo. Fonte:[1]
 </p>
 </div>
 </center>
@@ -43,7 +53,7 @@ A matriz forma-se da seguinte maneira:
 ![](../assets/grafos_16_28_06.png)
 <div style="text-align: center">
 <p>
-Figura 2: Representação do grafo em uma matriz de adjacências. Fonte: [1]
+Figura 3: Representação do grafo em uma matriz de adjacências. Fonte: [1]
 </p>
 </div>
 </center>
@@ -90,7 +100,7 @@ grafos.c:leitura
 --8<--
 ```
 
-## Grau
+### Grau
 
 O grau de um vértice é a quantidade de arestas que saem dele.
 
@@ -102,7 +112,7 @@ grafos.c:grau
 --8<--
 ```
 
-## Recomendações
+### Recomendações
 
 No contexto das redes sociais, é comum que sejam recomendados amigos para os membros da rede. Por exemplo, podemos sugerir novos amigos para Ana (Figura 2), baseando-nos nas conexões que ela já possui.
 
@@ -120,27 +130,100 @@ grafos.c:recomendacoes
 --8<--
 ```
 
-## Percursos
+## Grafos Dirigidos
 
-## Caminho
+Um **grafo dirigido (dígrafo)** possui um conjunto de vértices conectados por **arcos**, que são arestas dirigidas, i. e., arestas que indicam início e fim.
 
-Um caminho de `s` para `t` em um grafo é:
+<center>
+![](/assets/estrutura_14_09_10.png)
 
-- Uma sequência sem repetição de vértices vizinhos
-- Começando em `s` e terminando em `t`
+Figura 4: Grafo Dirigidos. Fonte: [1]
+</center>
 
-Formalmente, um caminho de `s` para `t` em um grafo é:
+Matematicamente, um dígrafo $G$ é um par $(V,A)$ formado pelos conjuntos de vértices $V$ e arestas $A$.
 
-- Uma sequência de vértices $v_0, v_1, ..., v_k$ onde $v_0=s$ e $v_k=t$
-- $\{v_i, v_{i+1}\}$ é uma aresta $\forall 0\leq i \leq k-1$
-- $v_i\neq v_j \forall 0 \leq i < j \leq k$
+- Representamos um arco ligando $u,v\in\ V$ como $(u,v)$, onde $u$ é a **cauda** do arco e $v$ a **cabeça**.
+- Podemos ter laços da forma $(u,u)$
+- Existe no máximo um arco $(u,v)$ em $A$.
 
-$k$ é o comprimento do caminho, a quantidade de vértices do caminho - 1.
+> :material-information-outline: Um grafo pode ser visto como um dígrafo se considerarmos cada aresta como  dois arcos.
+> A implementação por matriz de adjacências já considera os dois arcos, então nesse caso pode ocorrer: `adj[u][v] != adj[v][u]`, já que `adj[u][v]` indica um arco de $u$ para $v$.
 
-## Componentes Conexas
+## Número de Arestas
 
-Um grafo pode ser dividido em várias "partes", chamadas de **componentes conexas**.
+<center>
+![](/assets/estrutura_14_16_54.png)
 
-Um par de vértices está na mesma componente se, e somente se, existe caminho entre eles. Não há caminho entre vértices de componentes distintas.
+Figura 5: Grafo com a quantidade máxima de arestas. Fonte: [1]
+</center>
 
-Um grafo **conexo** tem apenas uma componente conexa.
+Um grafo com $n$ vértices pode ter no máximo $\binom{n}{2} = \frac{n(n-1)}{2} = O(n^2)$ arestas. E dizemos que um grafo é **esparso** quando ele possui bem menos (em outra ordem de grandeza) do que essa quantidade de arestas.
+
+Exemplos de grafos esparsos:
+
+- Grafos cujos vértices tem o mesmo grau $d$ constante, possuem $\frac{nd}{2} = O(n)$ arestas.
+- Grafos com $O(n\ log\ n)$ arestas.
+
+## Listas de Adjacências
+
+<center>
+![](/assets/estrutura_14_20_43.png)
+
+Figura 6: Representação do grafo por lista de adjacências. Fonte: [1]
+</center>
+
+```c title="header.c" linenums="1"
+--8<--
+tad_grafo.c:header
+--8<--
+```
+
+### Inicialização
+
+```c title="inicializacao.c" linenums="1"
+--8<--
+tad_grafo.c:inicializacao
+--8<--
+```
+
+### Manipulação de Arestas
+
+```c title="arestas.c" linenums="1"
+--8<--
+tad_grafo.c:arestas
+--8<--
+```
+
+## Comparação Listas vs Matrizes
+
+Espaço necessário para o armazenamento:
+
+- Matriz: $O(n^2)$
+- Listas: $O(n + |E|)$
+
+:material-information-outline: $n=|V|$, onde V é o conjunto das arestas (ou arcos).
+
+Comparativo de tempo:
+<center>
+
+| Operação             | Matriz | Listas    |
+| -------------------- | ------ | --------- |
+| Inserir              | $O(1)$ | $O(1)$    |
+| Remover              | $O(1)$ | $O(d(v))$ |
+| Aresta Existe?       | $O(1)$ | $O(d(v))$ |
+| Percorrer Vizinhança | $O(n)$ | $O(d(v))$ |
+
+</center>
+## O problema das Pontes de Königsberg
+
+<center>
+![](/assets/estrutura_14_33_29.png)
+
+Figura 7: Grafos para o problema das Pontes. Fonte: [1]
+</center>
+
+A estrutura da Figura 1 é chamada de **multigrafo**, nela é possível ter arestas paralelas (ou múltiplas), existe um multiconjunto de arestas e pode ser representada por listas de adjacência.
+
+## Referências
+
+[1] Grafos (Estrutura) - Notas de aula do professor Rafael C. S. Schouery, disponíveis no [link](https://www.ic.unicamp.br/~rafael/cursos/2s2019/mc202/).
