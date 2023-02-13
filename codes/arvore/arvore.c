@@ -128,7 +128,6 @@ void in_ordem(p_no raiz)
 }
 // --8<-- [end:inordem]
 
-// @TODO: implementar filas para em_largura
 // --8<-- [start:emlargura]
 // Em largura visita os nós, por nível, da esquerda pra direita.
 void em_largura(p_no raiz)

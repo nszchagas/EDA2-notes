@@ -17,23 +17,19 @@ void destruir_arvore(p_no raiz);
 p_no inserir(p_no raiz, int chave);
 p_no remover(p_no raiz, int chave);
 p_no buscar(p_no raiz, int chave);
+p_no buscar_iterativo(p_no raiz, int chave);
 
 p_no minimo(p_no raiz);
 p_no maximo(p_no raiz);
 
 p_no sucessor(p_no raiz);
 
-//--8<-- [end:header]
-
-//--8<-- [start:criar]
 p_no criar_arvore()
 {
     p_no raiz = malloc(sizeof(No));
     return raiz;
 }
-//--8<-- [end:criar]
 
-//--8<-- [start:destruir]
 // A destruição tem que ser feita
 // das folhas para cima.
 void destruir_arvore(p_no raiz)
@@ -47,7 +43,7 @@ void destruir_arvore(p_no raiz)
     }
     free(raiz);
 }
-//--8<-- [end:destruir]
+//--8<-- [end:header]
 
 //--8<-- [start:inserir]
 p_no inserir(p_no raiz, int chave)
@@ -66,9 +62,7 @@ p_no inserir(p_no raiz, int chave)
         raiz->dir = inserir(raiz->dir, chave);
     return raiz;
 }
-//--8<-- [end:inserir]
 
-//--8<-- [start:remover]
 p_no remover_sucessor(p_no raiz)
 {
     p_no min = raiz->dir;
@@ -102,7 +96,7 @@ p_no remover(p_no raiz, int chave)
     }
     return raiz;
 }
-//--8<-- [end:remover]
+//--8<-- [end:inserir]
 
 //--8<-- [start:buscar]
 p_no buscar(p_no raiz, int chave)
@@ -118,6 +112,16 @@ p_no buscar(p_no raiz, int chave)
     }
     return NULL;
 }
+
+p_no buscar_iterativo(p_no raiz, int chave)
+{
+    while (raiz != NULL && chave != raiz->chave)
+        if (chave < raiz->chave)
+            raiz = raiz->esq;
+        else
+            raiz = raiz->dir;
+    return raiz;
+}
 //--8<-- [end:buscar]
 
 //--8<-- [start:minimo]
@@ -128,6 +132,13 @@ p_no minimo(p_no raiz)
         minimo = minimo->esq;
     return minimo;
 }
+
+p_no minimo_rec(p_no raiz)
+{
+    if (raiz == NULL || raiz->esq == NULL)
+        return raiz;
+    return minimo_rec(raiz->esq);
+}
 //--8<-- [end:minimo]
 
 //--8<-- [start:maximo]
@@ -137,6 +148,13 @@ p_no maximo(p_no raiz)
     while (maximo->dir != NULL)
         maximo = maximo->dir;
     return maximo;
+}
+
+p_no maximo_rec(p_no raiz)
+{
+    if (raiz == NULL || raiz->dir == NULL)
+        return raiz;
+    return maximo_rec(raiz->dir);
 }
 //--8<-- [end:maximo]
 

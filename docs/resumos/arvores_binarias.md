@@ -40,25 +40,44 @@ Cada nó da lista encadeada (Figura 2) possui a estrutura apresentada no trecho 
 Figura 2: Implementação de árvore utilizando lista encadeada. Fonte: [1]
  </center>
 
-```c
-#define Item int
-typedef struct no
-{
-    Item dado;
-    struct no *esq, *dir;
-} no;
+```c title="arvores.c" linenums="1"
+--8<--
+arvore/arvore.c:header
+--8<--
 ```
 
-<center>
+#### Criar árvore
 
-:octicons-code-24: Código 2: Estrutura dos nós de uma árvore usando lista encadeada. Fonte: [2]
+A criação da árvore será das folhas para a raiz, criando-se a árvore esquerda, árvore direita e a raiz delas. Nesse caso já sabemos todos os elementos da árvore.
 
-</center>
+```c title="criar_arvore.c" linenums="1"
+--8<--
+arvore/arvore.c:criar
+--8<--
+```
 
-:material-information-outline: A definição de `Item` por macro permite a alteração do tipo em tempo de compilação, com a flag `-D`, utilizando o gcc. Esse tipo de implementação fornece maior versatilidade no código.
+#### Procurar Nó
 
-```shell
-gcc -o  a.out -DItem=float a.c
+```c title="procurar_no.c" linenums="1"
+--8<--
+arvore/arvore.c:procurar
+--8<--
+```
+
+#### Número de Nós
+
+```c title="numero_nos.c" linenums="1"
+--8<--
+arvore/arvore.c:numero
+--8<--
+```
+
+#### Altura
+
+```c title="altura.c" linenums="1"
+--8<--
+arvore/arvore.c:altura 
+--8<--
 ```
 
 ### Vetores
@@ -80,39 +99,37 @@ A árvore da Figura 3 ocuparia o vetor `v` da maneira representada a seguir, ond
             v = [ 6, 5, 7, 2, 5,-1, 8,-1]
 ```
 
-As funções que calculam as posições dos pais e filhos podem ser definidas pelas seguintes macros:
+As funções que calculam as posições dos pais e filhos podem ser definidas utilizando macros. O vetor pode ser encapsulado em uma struct contendo também o seu tamanho.
 
-```c
-
-#define PAI(n) ((int) n / 2)
-#define ESQ(n) (2 * n + 1)
-#define DIR(n) (2 * n + 2)
-
+```c title="arvore.c" linenums="1"
+--8<--
+arvore/vetor_abb.c:header
+--8<--
 ```
 
-O vetor pode ser encapsulado em uma struct contendo também o seu tamanho:
+:material-information-outline: A definição de `item` por macro permite a alteração do tipo em tempo de compilação, com a flag `-D`, utilizando o gcc. Esse tipo de implementação fornece maior versatilidade no código.
 
-```c
-#define item int
-
-typedef struct
-{
-    item *content;
-    int size;
-} tree;
-
-typedef tree *p_tree;
-
-void init_tree(p_tree tree, int height)
-{
-    int size = pow_2(height);
-    tree->size = size;
-    tree->content = malloc(size * sizeof(item));
-    
-    for (int i = 0; i < tree->size; i++)
-        tree->content[i] = -1;
-}
+```shell
+gcc -o  a.out -Ditem=float a.c
 ```
+
+#### Criar árvore
+
+```c title="criar.c" linenums="1"
+--8<--
+arvore/vetor_abb.c:criar
+--8<--
+```
+
+#### Inserir Nó (ABB¹)
+
+```c title="inserir.c" linenums="1"
+--8<--
+arvore/vetor_abb.c:inserir
+--8<--
+```
+
+¹[Árvore Binária de Busca](arvore_binaria_busca.md)
 
 ## Varredura
 
@@ -136,6 +153,12 @@ O algoritmo para a varredura **pós ordem** visita:
 Figura 4: Ordem de visitação dos nós em pós-ordem. Fonte: [1]
 </center>
 
+```c title="posordem.c" linenums="1"
+--8<--
+arvore/arvore.c:posordem
+--8<--
+```
+
 ### Pré ordem
 
 O algoritmo para a varredura **pré ordem** visita:
@@ -150,6 +173,12 @@ O algoritmo para a varredura **pré ordem** visita:
 Figura 5: Ordem de visitação dos nós em pré-ordem. Fonte: [1]
 </center>
 
+```c title="preordem.c" linenums="1"
+--8<--
+arvore/arvore.c:preordem
+--8<--
+```
+
 ### Em ordem
 
 O algoritmo para a varredura **em ordem** visita:
@@ -158,27 +187,17 @@ O algoritmo para a varredura **em ordem** visita:
 2. A raiz
 3. A subárvore direita da raiz, em ordem e-r-d
 
-A implementação pode ser feita por meio da recursão (Código 1).
-
 <center>
 ![](/assets/arvores_binarias_15_08_43.png)
 
 Figura 6: Ordem de visitação dos nós em ordem. Fonte: [1]
 </center>
 
-```title="Pseudo código - varredura em ordem" linenums="1"
- varredura-em-ordem(r)
- if r != NIL
-   varredura-em-ordem(r.esquerda)
-   print r.chave
-   varredura-em-ordem(r.direita)
+```c title="em_ordem.c" linenums="1"
+--8<--
+arvore/arvore.c:inordem
+--8<--
 ```
-
-<center>
-
-:octicons-code-24: Código 1: Varredura em ordem. Fonte: [2]
-
-</center>
 
 ### Em largura
 
@@ -189,7 +208,14 @@ O percurso em largura visita os nós por níveis, da esquerda para a direita.
 Figura 7: Percurso em Largura. Fonte: [1]
 </center>
 
+```c title="em_largura.c" linenums="1"
+--8<--
+arvore/arvore.c:emlargura
+--8<--
+```
+
 ## Referências
 
 [1] Árvores Binárias - Notas de aula do professor Rafael C. S. Schouery, disponíveis no [link](https://www.ic.unicamp.br/~rafael/cursos/2s2019/mc202/).
+
 [2] Introduction to Algorithms, 3rd edition.

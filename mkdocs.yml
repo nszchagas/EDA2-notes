@@ -59,5 +59,3 @@ nav:
   - Fila de prioridade: resumos/fila_de_prioridade.md
   - Implementação em C:
       - Listas encadeadas: implementacao/listas_encadeadas.md
-      - Árvores Binárias: implementacao/arvores_binarias.md
-      - Árvores Binárias de Busca: implementacao/arvores_binarias_de_busca.md
