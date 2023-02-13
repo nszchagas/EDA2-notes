@@ -55,6 +55,7 @@ nav:
   - Hash: resumos/hash.md
   - Árvores Binárias: resumos/arvores_binarias.md
   - Árvores Binárias de Busca: resumos/arvore_binaria_busca.md
+  - Heap: resumos/heap.md
   - Grafos: resumos/grafos.md
   - Fila de prioridade: resumos/fila_de_prioridade.md
   - Implementação em C:
