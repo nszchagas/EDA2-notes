@@ -11,7 +11,7 @@ Uma fila de prioridade é uma estrutura de dados com duas operações básicas:
 
 ```c title="header.c" linenums="1"
 --8<--
-pq/pq.c:header
+pq.c:header
 --8<--
 ```
 
@@ -23,7 +23,7 @@ A criação da fila de prioridade consiste basicamente em alocar memória para a
 
 ```c title="criar.c" linenums="1"
 --8<--
-pq/pq.c:criar
+pq.c:criar
 --8<--
 ```
 
@@ -33,7 +33,7 @@ A inserção é simples e feita no final do vetor.
 
 ```c title="inserir.c" linenums="1"
 --8<--
-pq/pq.c:inserir
+pq.c:inserir
 --8<--
 ```
 
@@ -45,7 +45,7 @@ O algoritmo percorre o vetor, guardando o índice do maior valor encontrado até
 
 ```c title="extrair_maximo.c" linenums="1"
 --8<--
-pq/pq.c:extrairmaximo
+pq.c:extrairmaximo
 --8<--
 ```
 
@@ -55,18 +55,20 @@ Os custos das operações inserção e extração são invertidas caso se deseje
 
 ### Cheia vs Vazia
 
+Para verificar se a fila está cheia, ou vazia, podemos usar as funções a seguir.
+
 ```c title="vazia.c" linenums="1"
 --8<--
-pq/pq.c:vazia
+pq.c:vazia
 --8<--
 ```
 
 ```c title="cheia.c" linenums="1"
 --8<--
-pq/pq.c:cheia
+pq.c:cheia
 --8<--
 ```
 
 ## Referências
 
-[1] Fila de Prioridade - Notas de aula do professor Rafael C. S. Schouery, disponíveis no [link](https://www.ic.unicamp.br/~rafael/cursos/2s2019/mc202/).
+[1] Fila de Prioridade e Heap - Notas de aula do professor Rafael C. S. Schouery, disponíveis no [link](https://www.ic.unicamp.br/~rafael/cursos/2s2019/mc202/).

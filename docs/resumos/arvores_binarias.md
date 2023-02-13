@@ -50,7 +50,7 @@ Figura 2: Implementação de árvore utilizando lista encadeada. Fonte: [1]
 
 ```c title="arvores.c" linenums="1"
 --8<--
-arvore/arvore.c:header
+arvore.c:header
 --8<--
 ```
 
@@ -60,7 +60,7 @@ A criação da árvore será das folhas para a raiz, criando-se a árvore esquer
 
 ```c title="criar_arvore.c" linenums="1"
 --8<--
-arvore/arvore.c:criar
+arvore.c:criar
 --8<--
 ```
 
@@ -68,7 +68,7 @@ arvore/arvore.c:criar
 
 ```c title="procurar_no.c" linenums="1"
 --8<--
-arvore/arvore.c:procurar
+arvore.c:procurar
 --8<--
 ```
 
@@ -76,7 +76,7 @@ arvore/arvore.c:procurar
 
 ```c title="numero_nos.c" linenums="1"
 --8<--
-arvore/arvore.c:numero
+arvore.c:numero
 --8<--
 ```
 
@@ -84,7 +84,7 @@ arvore/arvore.c:numero
 
 ```c title="altura.c" linenums="1"
 --8<--
-arvore/arvore.c:altura 
+arvore.c:altura 
 --8<--
 ```
 
@@ -111,7 +111,7 @@ As funções que calculam as posições dos pais e filhos podem ser definidas ut
 
 ```c title="arvore.c" linenums="1"
 --8<--
-arvore/vetor_abb.c:header
+vetor_abb.c:header
 --8<--
 ```
 
@@ -125,7 +125,7 @@ gcc -o  a.out -Ditem=float a.c
 
 ```c title="criar.c" linenums="1"
 --8<--
-arvore/vetor_abb.c:criar
+vetor_abb.c:criar
 --8<--
 ```
 
@@ -133,7 +133,7 @@ arvore/vetor_abb.c:criar
 
 ```c title="inserir.c" linenums="1"
 --8<--
-arvore/vetor_abb.c:inserir
+vetor_abb.c:inserir
 --8<--
 ```
 
@@ -163,7 +163,7 @@ Figura 4: Ordem de visitação dos nós em pós-ordem. Fonte: [1]
 
 ```c title="posordem.c" linenums="1"
 --8<--
-arvore/arvore.c:posordem
+arvore.c:posordem
 --8<--
 ```
 
@@ -183,7 +183,7 @@ Figura 5: Ordem de visitação dos nós em pré-ordem. Fonte: [1]
 
 ```c title="preordem.c" linenums="1"
 --8<--
-arvore/arvore.c:preordem
+arvore.c:preordem
 --8<--
 ```
 
@@ -203,7 +203,7 @@ Figura 6: Ordem de visitação dos nós em ordem. Fonte: [1]
 
 ```c title="em_ordem.c" linenums="1"
 --8<--
-arvore/arvore.c:inordem
+arvore.c:inordem
 --8<--
 ```
 
@@ -218,7 +218,7 @@ Figura 7: Percurso em Largura. Fonte: [1]
 
 ```c title="em_largura.c" linenums="1"
 --8<--
-arvore/arvore.c:emlargura
+arvore.c:emlargura
 --8<--
 ```
 

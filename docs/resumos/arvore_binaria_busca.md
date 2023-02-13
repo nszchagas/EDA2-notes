@@ -51,7 +51,7 @@ O percurso em ordem é feito da seguinte maneira:
 
 ```c title="in_ordem.c" linenums="1"
 --8<--
-arvore/arvore.c:inordem
+arvore.c:inordem
 --8<--
 ```
 
@@ -61,7 +61,7 @@ A complexidade do algoritmo de percurso em ordem é $O(n)$, onde $n$ é a quanti
 
 ```c title="arvore_binaria_de_busca.c" linenums="1"
 --8<--
-arvore/abb.c:header
+abb.c:header
 --8<--
 ```
 
@@ -73,7 +73,7 @@ O algoritmo insere na árvore recursivamente e devolve um ponteiro para a raiz d
 
 ```c title="insercao_e_remocao.c" linenums="1"
 --8<--
-arvore/abb.c:inserir
+abb.c:inserir
 --8<--
 ```
 
@@ -83,7 +83,7 @@ A ideia é semelhante à busca binária, ou o valor procurado está na raiz da �
 
 ```c title="buscar.c" linenums="1"
 --8<--
-arvore/abb.c:buscar
+abb.c:buscar
 --8<--
 ```
 
@@ -97,7 +97,7 @@ Basta andar a árvore sempre à esquerda, até encontrar um nó que não tenha f
 
 ```c title="minimo.c" linenums="1"
 --8<--
-arvore/abb.c:minimo
+abb.c:minimo
 --8<--
 ```
 
@@ -107,7 +107,7 @@ Basta andar a árvore sempre à direita, até encontrar um nó que não tenha fi
 
 ```c title="maximo.c" linenums="1"
 --8<--
-arvore/abb.c:maximo
+abb.c:maximo
 --8<--
 ```
 
@@ -115,7 +115,7 @@ arvore/abb.c:maximo
 
 ```c title="sucessor.c" linenums="1"
 --8<--
-arvore/abb.c:sucessor
+abb.c:sucessor
 --8<--
 ```
 
