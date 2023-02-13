@@ -22,6 +22,14 @@ Figura 1: Árvores de altura 3 com o mínimo e máximo de nós. Fonte: [1]
 
 Se a árvore tem $n\geq1$ nós, então a altura é no mínimo $\lfloor log_2(n+1) \rfloor$, quando a árvore é completa, e no máximo $n$, quando cada nó não-terminal tem apenas um filho.
 
+### Árvore Binária Completa
+
+Uma árvore binária é dita completa se todos os níveis, exceto o último, estão cheios e os nós do último nível estão o mais à esquerda possível.
+
+Uma árvore binária completa com n nós tem $\left \lceil log(n+1) \right \rceil = O(log n)$ níveis.
+
+Podemos representar árvores binárias utilizando vetores.
+
 ## Igualdade
 
 Duas árvores são iguais se possuírem os mesmos dados e mesma estrutura. Árvores com os mesmos dados, mas estruturas diferentes, são ditas isomorfas.

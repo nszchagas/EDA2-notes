@@ -5,62 +5,36 @@ Uma fila de prioridade é uma estrutura de dados com duas operações básicas:
 - Inserir um novo elemento
 - Remover o elemento com maior chave (prioridade)
 
-> :material-information-outline: Pilhas e filas assemelham-se às filas de prioridade.
+> :material-information-outline: Pilhas e filas assemelham-se às filas de prioridade, na primeira o elemento de maior prioridade é o último inserido, e nas filas o contrário acontece.
 
-A implementação será armazenando elementos em um vetor.
+## Implementação
 
-## Implementação - Vetores
-
-### Função troca
-
-A troca de elementos será frequente, então para facilitar a leitura do código, foi implementada a função troca.
-
-```c
-void troca (int *a, int *b){
-    int t = *a;
-    *a = *b;
-    *b = t;
-}
+```c title="header.c" linenums="1"
+--8<--
+pq/pq.c:header
+--8<--
 ```
 
-```c
-typedef struct {
-    char nome[20];
-    int chave;
-} Item;
-
-typedef struct {
-    Item *v;
-    int n, tamanho;
-} FP; // Fila de prioridades, que contém um vetor com tamanho=tamanho e n elementos preenchidos.
-
-typedef FP * p_fp;
-
-```
+> A troca de elementos será frequente, então para facilitar a leitura do código, foi implementada a função troca.
 
 ### Criação da fila prioridade
 
 A criação da fila de prioridade consiste basicamente em alocar memória para as estruturas e definir o tamanho com e quantidade de valores preenchidos.
 
-```c
-p_fp criar_filaprioridade(int tam){
-    p_fp fprio = malloc(sizeof(FP));
-    fprio->v = malloc(tam * sizeof(Item));
-    fprio->n=0;
-    fprio->tamanho = tam;
-    return fprio;
-}
+```c title="criar.c" linenums="1"
+--8<--
+pq/pq.c:criar
+--8<--
 ```
 
 ### Inserção
 
 A inserção é simples e feita no final do vetor.
 
-```c
-void insere(p_fp fprio, Item item){
-    fprio->v[fprio->n] = item;
-    fprio->n++;
-}
+```c title="inserir.c" linenums="1"
+--8<--
+pq/pq.c:inserir
+--8<--
 ```
 
 > :material-information-outline: A complexidade do algoritmo é $O(1)$.
@@ -69,29 +43,30 @@ void insere(p_fp fprio, Item item){
 
 O algoritmo percorre o vetor, guardando o índice do maior valor encontrado até o momento. No final, é feita a troca do último elemento do vetor `fprio->v[fprio->n-1]` com o maior valor encontrado `fprio->v[max]`. Então, o valor de `n` é decrementado, pois um item foi removido, e o valor removido é retornado.
 
-```c
-Item extrai_maximo(p_fp fprio){
-    int j, max=0;
-    for (j=1; j < fprio->n; j++)
-        if (fprio->v[max].chave < fprio->v[j].chave)
-            max = j;
-    troca(&(fprio->v[max]), &(fprio->v[fprio->n-1]));
-    fprio->n--;
-    return fprio->v[fprio->n];
-    
-}
+```c title="extrair_maximo.c" linenums="1"
+--8<--
+pq/pq.c:extrairmaximo
+--8<--
 ```
 
 > :material-information-outline: A complexidade da extração do máximo é $O(n)$.
 
 Os custos das operações inserção e extração são invertidas caso se deseje manter o vetor ordenado.
 
-## Árvore Binária Completa
+### Cheia vs Vazia
 
-Uma árvore binária é dita completa se todos os níveis, exceto o último, estão cheios e os nós do último nível estão o mais à esquerda possível.
+```c title="vazia.c" linenums="1"
+--8<--
+pq/pq.c:vazia
+--8<--
+```
 
-Uma árvore binária completa com n nós tem $\left \lceil log(n+1) \right \rceil = O(log n)$ níveis.
+```c title="cheia.c" linenums="1"
+--8<--
+pq/pq.c:cheia
+--8<--
+```
 
-Podemos representar árvores binárias utilizando vetores.
+## Referências
 
-https://www.ic.unicamp.br/~rafael/cursos/2s2018/mc202/slides/unidade21-fila-de-prioridade.pdf
+[1] Fila de Prioridade - Notas de aula do professor Rafael C. S. Schouery, disponíveis no [link](https://www.ic.unicamp.br/~rafael/cursos/2s2019/mc202/).
