@@ -47,7 +47,9 @@ extra_javascript:
 nav:
   - index.md
   - Endereços e Ponteiros: resumos/ponteiros.md
-  - Listas Encadeadas: resumos/listas_encadeadas.md
+  - Listas Encadeadas:
+      - Resumo: resumos/listas_encadeadas.md
+      - Implementação: implementacao/listas_encadeadas.md
   - Ordenação:
       - Seleção: ordenacao/selecao.md
       - Mergesort: ordenacao/mergesort.md
@@ -55,8 +57,9 @@ nav:
   - Hash: resumos/hash.md
   - Árvores Binárias: resumos/arvores_binarias.md
   - Árvores Binárias de Busca: resumos/arvore_binaria_busca.md
-  - Heap: resumos/heap.md
-  - Grafos: resumos/grafos.md
   - Fila de prioridade: resumos/fila_de_prioridade.md
-  - Implementação em C:
-      - Listas encadeadas: implementacao/listas_encadeadas.md
+  - Heap: resumos/heap.md
+  - Grafos:
+      - Estrutura: resumos/grafos/estrutura.md
+      - Percursos: resumos/grafos/percursos.md
+      - Algoritmos: resumos/grafos/algoritmos.md

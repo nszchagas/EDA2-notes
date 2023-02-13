@@ -4,12 +4,17 @@
 
 Um **grafo** é um conjunto de objetos ligados, por **arestas**, entre si, chamados de **vértices**.
 
+<center>
+
 ![](../assets/grafos_16_19_53.png)
 <div style="text-align: center">
 <p>
 Figura 1: Representação de um Grafo. Fonte:[1]
 </p>
 </div>
+</center>
+
+Essa estrutura pode ser utilizada para a modelagem de problemas envolvendo redes sociais, mapas, páginas na internet, redes de computadores, circuitos eletrônicos, dentre outros.
 
 :material-information-outline: Matematicamente, um grafo $G$ é um par ordenado $\left (V,E\right)$ onde:
 
@@ -33,113 +38,56 @@ A matriz forma-se da seguinte maneira:
 
 - `adjacencia[u][v] = (u e v vizinhos)? 1 : 0`;
 
+<center>
+
 ![](../assets/grafos_16_28_06.png)
 <div style="text-align: center">
 <p>
 Figura 2: Representação do grafo em uma matriz de adjacências. Fonte: [1]
 </p>
 </div>
+</center>
 
 A matriz de adjacência é simétrica, pois $A_{i,j} = A_{j,i} \forall i, j \in [0, n-1]$.
 
-> :material-warning-outline: Ressalvas ao utilizar matrizes:
+> :material-information-outline:
+> Ressalvas ao utilizar matrizes:
 > A representação do grafo em matriz gera um desperdício de memória, pois bastaria guardar metade dos valores.
 > Há um alto consumo de memória, a depender do tamanho do n.
 > A matriz guarda as ligações e não ligações entre os vértices, mas poderia guardar apenas as ligações.
 
-### Implementação
+## Implementação
 
 A estrutura do grafo com matriz de adjacências `adj` e `n` vértices é dada por:
 
-```c
-typedef struct {
-    int **adj;
-    int n;
-} Grafo;
-
-typedef Grafo * p_grafo;
-
-p_grafo criar_grafo(int n);
-
-void destroi_grafo(p_grafo g);
-
-void insere_aresta(p_grafo g, int u, int v);
-
-void remove_aresta(p_grafo g, int u, int v);
-
-int tem_aresta(p_grafo g, int u, int v);
-
-void imprime_arestas(p_grafo g);
+```c title="grafo.c" linenums="1"
+--8<--
+grafos.c:header
+--8<--
 ```
 
 ### Inicialização e destruição
 
-```c
-p_grafo criar_grafo(int n){
-    int i, j;
-    p_grafo g = malloc(sizeof(Grafo));
-    
-    g->n = n;
-    g->adj = malloc(n * sizeof(int *));
-
-    for (i = 0; i < n; i++)
-        g->adj[j]=malloc(n*sizeof(int));
-
-    for (i = 0; i <n; i++)
-        for (j=0; j<n; j++)
-         g->adj[i][j] = 0;
-
-    return g;
-}
-
-void destroi_grafo(p_grafo g){
-    for (int i = 0; i < g->n; i++)
-        free(g->adj[i]);
-    free(g->adj);
-    free(g);
-}
+```c title="criar.c" linenums="1"
+--8<--
+grafos.c:criar
+--8<--
 ```
 
 ### Manipulando arestas
 
-```c
-void insere_aresta (p_grafo, int u, int v){
-    g->adj[u][v] = 1;
-    g->adj[v][u] = 1;
-}
-
-void remove_aresta (p_grafo, int u, int v){
-    g->adj[u][v] = 0;
-    g->adj[v][u] = 0;
-}
-
-int tem_aresta(p_grafo g, int u, int v){
-    return g->adj[u][v];
-}
+```c title="manipulando_arestas.c" linenums="1"
+--8<--
+grafos.c:arestas
+--8<--
 ```
 
 ### Lendo e imprimindo um Grafo
 
-```c
-p_grafo le_grafo(){
-    int n, m, u, v;
-    p_grafo g;
-    scanf("%d %d", &n, &m);
-    g = criar_grafo(n);
-    for (int i = 0; i < m ; i++ ){
-        scanf("%d %d", &u, &v);
-        insere_aresta(g, u, v);
-    }
-    return g;
-}
-
-void imprime_arestas(p_grafo g){
-    int u, v;
-    for (u = 0; u < g->n; u++)
-        for (v = u+1; v < g->n; v++)
-            if(g->adj[u][v])
-                printf("{%d, %d}\n", u, v);
-}
+```c  title="leitura.c" linenums="1"
+--8<--
+grafos.c:leitura
+--8<--
 ```
 
 ## Grau
@@ -148,32 +96,28 @@ O grau de um vértice é a quantidade de arestas que saem dele.
 
 Para calcular o grau de um vértice, basta percorrer a quantidade de `1` na linha (ou coluna) correspondente ao vértice.
 
-```c
-int grau(p_grafo g, int u){
-    int v, grau=0;
-    for(v=0; v< g->n; v++)
-        grau+= g->adj[u][v] 
-    return grau;
-}
+```c  title="grau.c" linenums="1"
+--8<--
+grafos.c:grau
+--8<--
 ```
 
-### Elemento com maior grau
+## Recomendações
 
-```c
-int mais_popular(p_grafo g){
-    int u, max, grau_max, grau_atual;
-    max = 0;
-    grau_max = grau(g, 0);
-    for (u = 1; u < g->n; u++){
-        grau_atual = grau(g,u);
-        if (grau_atual > grau_max){
-            grau_max = grau_atual;
-            max = u;
-        }
-    }
-    return max;
-}
+No contexto das redes sociais, é comum que sejam recomendados amigos para os membros da rede. Por exemplo, podemos sugerir novos amigos para Ana (Figura 2), baseando-nos nas conexões que ela já possui.
 
+<center>
+![](/assets/grafos_13_43_01.png)
+
+Figura 2: Recomendação de amigos. Fonte: [1]
+</center>
+
+Essa recomendação pode ser feita com o algoritmo a seguir.
+
+```c  title="recomendacoes.c" linenums="1"
+--8<--
+grafos.c:recomendacoes
+--8<--
 ```
 
 ## Percursos
