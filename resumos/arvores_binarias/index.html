@@ -1,0 +1,1370 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../hash/">
+      
+      
+        <link rel="next" href="../arvore_binaria_busca/">
+      
+      <link rel="icon" href="../../_static/icon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.12">
+    
+    
+      
+        <title>Árvores Binárias - Estruturas de Dados e Algoritmos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0d440cfe.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#arvores-binarias" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Estruturas de Dados e Algoritmos" class="md-header__button md-logo" aria-label="Estruturas de Dados e Algoritmos" data-md-component="logo">
+      
+  <img src="../../_static/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Estruturas de Dados e Algoritmos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Árvores Binárias
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent=""  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nszchagas/EDA2-notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EDA2-notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Estruturas de Dados e Algoritmos" class="md-nav__button md-logo" aria-label="Estruturas de Dados e Algoritmos" data-md-component="logo">
+      
+  <img src="../../_static/icon.png" alt="logo">
+
+    </a>
+    Estruturas de Dados e Algoritmos
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nszchagas/EDA2-notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EDA2-notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Sobre a disciplina
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ponteiros/" class="md-nav__link">
+        Endereços e Ponteiros
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Listas Encadeadas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Listas Encadeadas
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../listas_encadeadas/" class="md-nav__link">
+        Resumo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../implementacao/listas_encadeadas/" class="md-nav__link">
+        Implementação
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Ordenação
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Ordenação
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ordenacao/selecao/" class="md-nav__link">
+        Seleção
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ordenacao/mergesort/" class="md-nav__link">
+        Mergesort
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ordenacao/quicksort/" class="md-nav__link">
+        Quicksort
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hash/" class="md-nav__link">
+        Hash
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Árvores Binárias
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Árvores Binárias
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#propriedades" class="md-nav__link">
+    Propriedades
+  </a>
+  
+    <nav class="md-nav" aria-label="Propriedades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arvore-binaria-completa" class="md-nav__link">
+    Árvore Binária Completa
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#igualdade" class="md-nav__link">
+    Igualdade
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementacao" class="md-nav__link">
+    Implementação
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#listas-encadeadas" class="md-nav__link">
+    Listas Encadeadas
+  </a>
+  
+    <nav class="md-nav" aria-label="Listas Encadeadas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criar-arvore" class="md-nav__link">
+    Criar árvore
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procurar-no" class="md-nav__link">
+    Procurar Nó
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numero-de-nos" class="md-nav__link">
+    Número de Nós
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#altura" class="md-nav__link">
+    Altura
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vetores" class="md-nav__link">
+    Vetores
+  </a>
+  
+    <nav class="md-nav" aria-label="Vetores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criar-arvore_1" class="md-nav__link">
+    Criar árvore
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inserir-no-abb1" class="md-nav__link">
+    Inserir Nó (ABB¹)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#varredura" class="md-nav__link">
+    Varredura
+  </a>
+  
+    <nav class="md-nav" aria-label="Varredura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pos-ordem" class="md-nav__link">
+    Pós ordem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-ordem" class="md-nav__link">
+    Pré ordem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#em-ordem" class="md-nav__link">
+    Em ordem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#em-largura" class="md-nav__link">
+    Em largura
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    Referências
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arvore_binaria_busca/" class="md-nav__link">
+        Árvores Binárias de Busca
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fila_de_prioridade/" class="md-nav__link">
+        Fila de prioridade e Heap
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+          Grafos
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Grafos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafos/estrutura/" class="md-nav__link">
+        Estrutura
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafos/percursos/" class="md-nav__link">
+        Percursos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafos/algoritmos/" class="md-nav__link">
+        Algoritmos
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#propriedades" class="md-nav__link">
+    Propriedades
+  </a>
+  
+    <nav class="md-nav" aria-label="Propriedades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arvore-binaria-completa" class="md-nav__link">
+    Árvore Binária Completa
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#igualdade" class="md-nav__link">
+    Igualdade
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementacao" class="md-nav__link">
+    Implementação
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#listas-encadeadas" class="md-nav__link">
+    Listas Encadeadas
+  </a>
+  
+    <nav class="md-nav" aria-label="Listas Encadeadas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criar-arvore" class="md-nav__link">
+    Criar árvore
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procurar-no" class="md-nav__link">
+    Procurar Nó
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numero-de-nos" class="md-nav__link">
+    Número de Nós
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#altura" class="md-nav__link">
+    Altura
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vetores" class="md-nav__link">
+    Vetores
+  </a>
+  
+    <nav class="md-nav" aria-label="Vetores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criar-arvore_1" class="md-nav__link">
+    Criar árvore
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inserir-no-abb1" class="md-nav__link">
+    Inserir Nó (ABB¹)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#varredura" class="md-nav__link">
+    Varredura
+  </a>
+  
+    <nav class="md-nav" aria-label="Varredura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pos-ordem" class="md-nav__link">
+    Pós ordem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-ordem" class="md-nav__link">
+    Pré ordem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#em-ordem" class="md-nav__link">
+    Em ordem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#em-largura" class="md-nav__link">
+    Em largura
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    Referências
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<h1 id="arvores-binarias">Árvores Binárias</h1>
+<p>Uma árvore é um conjunto de elementos interligados entre si de forma que um elemento é a <strong>raiz</strong> e os demais se dividem em <span class="arithmatex">\(n\geq0\)</span>, subconjuntos disjuntos chamados subárvores.</p>
+<p>Os elementos da árvore são chamados de <strong>nós</strong> e as ligações entre eles são chamadas de <strong>arestas</strong>. O nó que não possui pai é dito <strong>nó raiz</strong> e os nós sem filhos são ditos <strong>folhas</strong>. O <strong>grau</strong> de um nó é a quantidade de subárvores que se originam dele.</p>
+<p>Se uma árvore for tal que <span class="arithmatex">\(grau(n)\leq2\ \forall\ n\ \in\ Árvore\)</span>, então dizemos que ela é uma <strong>árvore binária</strong>.</p>
+<p>Níveis são "gerações" de nós na árvore, e a <strong>altura</strong> de uma árvore é o seu maior nível. Em uma árvore binária, um nível <span class="arithmatex">\(k\)</span> pode ter no máximo <span class="arithmatex">\(2^k\)</span> nós. O crescimento dos nós, conforme aumentamos o nível, é exponencial.</p>
+<p>O  máximo de nós numa árvore de altura <span class="arithmatex">\(h\)</span> é: <span class="arithmatex">\(2^0+2^1+...+2^h = 2^{k+1}-1\)</span>, pela soma dos termos da PG de razão 2.</p>
+<h2 id="propriedades">Propriedades</h2>
+<p>Uma árvore de altura <span class="arithmatex">\(h\)</span> tem no mínimo <span class="arithmatex">\(h\)</span> e no máximo <span class="arithmatex">\(2^h-1\)</span> nós.</p>
+<p><center>
+<img alt="" src="/assets/arvores_binarias_14_57_03.png" /></p>
+<p>Figura 1: Árvores de altura 3 com o mínimo e máximo de nós. Fonte: [1]
+ </center></p>
+<p>Se a árvore tem <span class="arithmatex">\(n\geq1\)</span> nós, então a altura é no mínimo <span class="arithmatex">\(\lfloor log_2(n+1) \rfloor\)</span>, quando a árvore é completa, e no máximo <span class="arithmatex">\(n\)</span>, quando cada nó não-terminal tem apenas um filho.</p>
+<h3 id="arvore-binaria-completa">Árvore Binária Completa</h3>
+<p>Uma árvore binária é dita completa se todos os níveis, exceto o último, estão cheios e os nós do último nível estão o mais à esquerda possível.</p>
+<p>Uma árvore binária completa com n nós tem <span class="arithmatex">\(\left \lceil log(n+1) \right \rceil = O(log n)\)</span> níveis.</p>
+<p>Podemos representar árvores binárias utilizando vetores.</p>
+<h2 id="igualdade">Igualdade</h2>
+<p>Duas árvores são iguais se possuírem os mesmos dados e mesma estrutura. Árvores com os mesmos dados, mas estruturas diferentes, são ditas isomorfas.</p>
+<h2 id="implementacao">Implementação</h2>
+<p>A implementação pode ser feita por meio de listas encadeadas ou vetores, ambas implementações tem vantagens e desvantagens, o uso de listas encadeadas pode diminuir a performance durante a varredura da árvore, pois os nós não estão salvos em posições sequenciais da memória, em contrapartida a inserção em uma árvore na estrutura de vetor é mais trabalhosa e pode exigir redimensionamento.</p>
+<h3 id="listas-encadeadas">Listas Encadeadas</h3>
+<p>Cada nó da lista encadeada (Figura 2) possui a estrutura apresentada no trecho de Código 2.</p>
+<p><center>
+<img alt="" src="/assets/arvores_binarias_15_00_32.png" /></p>
+<p>Figura 2: Implementação de árvore utilizando lista encadeada. Fonte: [1]
+ </center></p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">arvores.c</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">No</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">dado</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">No</span><span class="w"> </span><span class="o">*</span><span class="n">esq</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">dir</span><span class="p">;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="p">}</span><span class="w"> </span><span class="n">No</span><span class="p">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="k">typedef</span><span class="w"> </span><span class="n">No</span><span class="w"> </span><span class="o">*</span><span class="n">p_no</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="k">typedef</span><span class="w"> </span><span class="n">No</span><span class="w"> </span><span class="o">*</span><span class="n">p_fila</span><span class="p">;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="n">p_no</span><span class="w"> </span><span class="nf">criar_arvore</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">dado</span><span class="p">,</span><span class="w"> </span><span class="n">p_no</span><span class="w"> </span><span class="n">esq</span><span class="p">,</span><span class="w"> </span><span class="n">p_no</span><span class="w"> </span><span class="n">dir</span><span class="p">);</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="n">p_no</span><span class="w"> </span><span class="nf">procurar_no</span><span class="p">(</span><span class="n">p_no</span><span class="w"> </span><span class="n">raiz</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">);</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="kt">int</span><span class="w"> </span><span class="nf">numero_nos</span><span class="p">(</span><span class="n">p_no</span><span class="w"> </span><span class="n">raiz</span><span class="p">);</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="kt">int</span><span class="w"> </span><span class="nf">altura</span><span class="p">(</span><span class="n">p_no</span><span class="w"> </span><span class="n">raiz</span><span class="p">);</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="c1">// Percursos</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="kt">void</span><span class="w"> </span><span class="nf">pre_ordem</span><span class="p">(</span><span class="n">p_no</span><span class="w"> </span><span class="n">raiz</span><span class="p">);</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="kt">void</span><span class="w"> </span><span class="nf">pos_ordem</span><span class="p">(</span><span class="n">p_no</span><span class="w"> </span><span class="n">raiz</span><span class="p">);</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="kt">void</span><span class="w"> </span><span class="nf">in_ordem</span><span class="p">(</span><span class="n">p_no</span><span class="w"> </span><span class="n">raiz</span><span class="p">);</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="kt">void</span><span class="w"> </span><span class="nf">em_largura</span><span class="p">(</span><span class="n">p_no</span><span class="w"> </span><span class="n">raiz</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="criar-arvore">Criar árvore</h4>
+<p>A criação da árvore será das folhas para a raiz, criando-se a árvore esquerda, árvore direita e a raiz delas. Nesse caso já sabemos todos os elementos da árvore.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">criar_arvore.c</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span>
+<span class="normal"><a href="#__codelineno-1-8">8</a></span>
+<span class="normal"><a href="#__codelineno-1-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1">// Cria um nó na árvore, com dado e filhos esquerdo e direito.</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="n">p_no</span><span class="w"> </span><span class="nf">criar_arvore</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">dado</span><span class="p">,</span><span class="w"> </span><span class="n">p_no</span><span class="w"> </span><span class="n">esq</span><span class="p">,</span><span class="w"> </span><span class="n">p_no</span><span class="w"> </span><span class="n">dir</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="p">{</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="n">p_no</span><span class="w"> </span><span class="n">raiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">p_no</span><span class="p">));</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">dado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dado</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">esq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esq</span><span class="p">;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dir</span><span class="p">;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">raiz</span><span class="p">;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="procurar-no">Procurar Nó</h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">procurar_no.c</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1">// Escolhe um tipo de varredura e faz a busca.</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1">// Em ordem: esquerda, raiz, direita</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="n">p_no</span><span class="w"> </span><span class="nf">procurar_no</span><span class="p">(</span><span class="n">p_no</span><span class="w"> </span><span class="n">raiz</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="p">{</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="n">p_no</span><span class="w"> </span><span class="n">esq</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">raiz</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">dado</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">raiz</span><span class="p">;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">    </span><span class="n">esq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">procurar_no</span><span class="p">(</span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">esq</span><span class="p">,</span><span class="w"> </span><span class="n">valor</span><span class="p">);</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">esq</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">esq</span><span class="p">;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">procurar_no</span><span class="p">(</span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="n">valor</span><span class="p">);</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="numero-de-nos">Número de Nós</h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">numero_nos.c</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span>
+<span class="normal"><a href="#__codelineno-3-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1">// Faz a contagem do número de nós dos filhos e acrescenta a raiz.</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="kt">int</span><span class="w"> </span><span class="nf">numero_nos</span><span class="p">(</span><span class="n">p_no</span><span class="w"> </span><span class="n">raiz</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">raiz</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">numero_nos</span><span class="p">(</span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">esq</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">numero_nos</span><span class="p">(</span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">dir</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="altura">Altura</h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">altura.c</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span>
+<span class="normal"><a href="#__codelineno-4-8">8</a></span>
+<span class="normal"><a href="#__codelineno-4-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">altura</span><span class="p">(</span><span class="n">p_no</span><span class="w"> </span><span class="n">raiz</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="p">{</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">esq</span><span class="p">,</span><span class="w"> </span><span class="n">dir</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">raiz</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">    </span><span class="n">esq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">altura</span><span class="p">(</span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">esq</span><span class="p">);</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">    </span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">altura</span><span class="p">(</span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">dir</span><span class="p">);</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">esq</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">dir</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">esq</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">dir</span><span class="p">);</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="vetores">Vetores</h3>
+<p>A árvore é distribuída em um vetor de forma que dada uma raiz na posição <code>i</code>, seus filhos esquerdo e direito estão nas posições <code>2*i+1</code> e <code>2*i+2</code>, respectivamente.</p>
+<p>Observe que como uma árvore binária de com <code>k</code> níveis tem, no máximo <code>2^k</code> nós, sabendo a altura da árvore é possível alocar o tamanho certo do vetor.</p>
+<p><center>
+<img alt="" src="/assets/arvores_12_31_11.png" /></p>
+<p>Figura 3: Exemplo de árvore (binária de busca). Fonte: [2]
+ </center></p>
+<p>A árvore da Figura 3 ocuparia o vetor <code>v</code> da maneira representada a seguir, onde <code>-1</code> indica posições desocupadas do vetor.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Posição:       0  1  2  3  4  5  6  7</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">            </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="mi">-1</span><span class="p">]</span>
+</code></pre></div>
+<p>As funções que calculam as posições dos pais e filhos podem ser definidas utilizando macros. O vetor pode ser encapsulado em uma struct contendo também o seu tamanho.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">arvore.c</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="cp">#define item int</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="p">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">    </span><span class="n">item</span><span class="w"> </span><span class="o">*</span><span class="n">content</span><span class="p">;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="p">}</span><span class="w"> </span><span class="n">tree</span><span class="p">;</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="k">typedef</span><span class="w"> </span><span class="n">tree</span><span class="w"> </span><span class="o">*</span><span class="n">p_tree</span><span class="p">;</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="cp">#define PAI(n) ((int)n / 2)</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="cp">#define ESQ(n) (2 * n + 1)</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="cp">#define DIR(n) (2 * n + 2)</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="kt">void</span><span class="w"> </span><span class="nf">criar_arvore</span><span class="p">(</span><span class="n">p_tree</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">);</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="kt">int</span><span class="w"> </span><span class="nf">inserir</span><span class="p">(</span><span class="n">p_tree</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m-1 15h2v-6h-2v6Z"/></svg></span> A definição de <code>item</code> por macro permite a alteração do tipo em tempo de compilação, com a flag <code>-D</code>, utilizando o gcc. Esse tipo de implementação fornece maior versatilidade no código.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>gcc<span class="w"> </span>-o<span class="w">  </span>a.out<span class="w"> </span>-Ditem<span class="o">=</span>float<span class="w"> </span>a.c
+</code></pre></div>
+<h4 id="criar-arvore_1">Criar árvore</h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">criar.c</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">criar_arvore</span><span class="p">(</span><span class="n">p_tree</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="p">{</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pow_2</span><span class="p">(</span><span class="n">height</span><span class="p">);</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">    </span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">    </span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">item</span><span class="p">));</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="w">        </span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="inserir-no-abb1">Inserir Nó (ABB¹)</h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">inserir.c</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span>
+<span class="normal"><a href="#__codelineno-9-15">15</a></span>
+<span class="normal"><a href="#__codelineno-9-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">inserir</span><span class="p">(</span><span class="n">p_tree</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="p">)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="p">{</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">            </span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">inserir</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">ESQ</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">inserir</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="kt">DIR</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>¹<a href="../arvore_binaria_busca/">Árvore Binária de Busca</a></p>
+<h2 id="varredura">Varredura</h2>
+<p>Árvores são estruturas de dados não lineares, pois há várias formas distintas de percorrer seus elementos. As três formas padrão são:</p>
+<ul>
+<li>Em ordem (esquerda-raiz-direita)</li>
+<li>Pré-ordem (raiz-esquerda-direita)</li>
+<li>Pós-ordem (esquerda-direita-raiz)</li>
+</ul>
+<h3 id="pos-ordem">Pós ordem</h3>
+<p>O algoritmo para a varredura <strong>pós ordem</strong> visita:</p>
+<ol>
+<li>A subárvore esquerda da raiz, em ordem e-d-r</li>
+<li>A subárvore direita da raiz, em ordem e-d-r</li>
+<li>A raiz</li>
+</ol>
+<p><center>
+<img alt="" src="/assets/arvores_binarias_15_09_18.png" /></p>
+<p>Figura 4: Ordem de visitação dos nós em pós-ordem. Fonte: [1]
+</center></p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">posordem.c</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="c1">// Pós ordem visita os nós na ordem: esquerda, direita, raiz.</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">pos_ordem</span><span class="p">(</span><span class="n">p_no</span><span class="w"> </span><span class="n">raiz</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="p">{</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">raiz</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="w">        </span><span class="n">pos_ordem</span><span class="p">(</span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">esq</span><span class="p">);</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="w">        </span><span class="n">pos_ordem</span><span class="p">(</span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">dir</span><span class="p">);</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">dado</span><span class="p">);</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="pre-ordem">Pré ordem</h3>
+<p>O algoritmo para a varredura <strong>pré ordem</strong> visita:</p>
+<ol>
+<li>A raiz</li>
+<li>A subárvore esquerda da raiz, em ordem r-e-d</li>
+<li>A subárvore direita da raiz, em ordem r-e-d</li>
+</ol>
+<p><center>
+<img alt="" src="/assets/arvores_binarias_15_09_40.png" /></p>
+<p>Figura 5: Ordem de visitação dos nós em pré-ordem. Fonte: [1]
+</center></p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">preordem.c</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="c1">// Pré ordem visita os nós na ordem: raiz, esquerda, direita.</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">pre_ordem</span><span class="p">(</span><span class="n">p_no</span><span class="w"> </span><span class="n">raiz</span><span class="p">)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="p">{</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">raiz</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">dado</span><span class="p">);</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">        </span><span class="n">pre_ordem</span><span class="p">(</span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">esq</span><span class="p">);</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">        </span><span class="n">pre_ordem</span><span class="p">(</span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">dir</span><span class="p">);</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="em-ordem">Em ordem</h3>
+<p>O algoritmo para a varredura <strong>em ordem</strong> visita:</p>
+<ol>
+<li>A subárvore esquerda da raiz, em ordem e-r-d</li>
+<li>A raiz</li>
+<li>A subárvore direita da raiz, em ordem e-r-d</li>
+</ol>
+<p><center>
+<img alt="" src="/assets/arvores_binarias_15_08_43.png" /></p>
+<p>Figura 6: Ordem de visitação dos nós em ordem. Fonte: [1]
+</center></p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">em_ordem.c</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="c1">// Em ordem visita os nós na ordem: esquerda, raiz, direita.</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">in_ordem</span><span class="p">(</span><span class="n">p_no</span><span class="w"> </span><span class="n">raiz</span><span class="p">)</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="p">{</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">raiz</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">        </span><span class="n">in_ordem</span><span class="p">(</span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">esq</span><span class="p">);</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">dado</span><span class="p">);</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="w">        </span><span class="n">in_ordem</span><span class="p">(</span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">dir</span><span class="p">);</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="em-largura">Em largura</h3>
+<p>O percurso em largura visita os nós por níveis, da esquerda para a direita.
+<center>
+<img alt="" src="/assets/arvores_binarias_15_34_19.png" /></p>
+<p>Figura 7: Percurso em Largura. Fonte: [1]
+</center></p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">em_largura.c</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span>
+<span class="normal"><a href="#__codelineno-13-11">11</a></span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span>
+<span class="normal"><a href="#__codelineno-13-13">13</a></span>
+<span class="normal"><a href="#__codelineno-13-14">14</a></span>
+<span class="normal"><a href="#__codelineno-13-15">15</a></span>
+<span class="normal"><a href="#__codelineno-13-16">16</a></span>
+<span class="normal"><a href="#__codelineno-13-17">17</a></span>
+<span class="normal"><a href="#__codelineno-13-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="c1">// Em largura visita os nós, por nível, da esquerda pra direita.</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">em_largura</span><span class="p">(</span><span class="n">p_no</span><span class="w"> </span><span class="n">raiz</span><span class="p">)</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="p">{</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="w">    </span><span class="n">p_fila</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="w">    </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">criar_fila</span><span class="p">();</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="w">    </span><span class="n">enfileirar</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">raiz</span><span class="p">);</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">fila_vazia</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="w">        </span><span class="n">raiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">desenfileirar</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">raiz</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="w">            </span><span class="n">enfileirar</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">esq</span><span class="p">);</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13"></a><span class="w">            </span><span class="n">enfileirar</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">dir</span><span class="p">);</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14"></a><span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">raiz</span><span class="o">-&gt;</span><span class="n">dado</span><span class="p">);</span><span class="w"> </span><span class="cm">/*visita raiz*/</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17"></a><span class="w">    </span><span class="n">destruir_fila</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="referencias">Referências</h2>
+<p>[1] Árvores Binárias - Notas de aula do professor Rafael C. S. Schouery, disponíveis no <a href="https://www.ic.unicamp.br/~rafael/cursos/2s2019/mc202/">link</a>.</p>
+<p>[2] Introduction to Algorithms, 3rd edition.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2022 Nicolas Souza
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4b2c34cd.min.js"></script>
+      
+        <script src="../../js/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
