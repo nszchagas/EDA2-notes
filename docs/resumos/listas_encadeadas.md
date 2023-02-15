@@ -71,7 +71,7 @@ Comparativos entre listas e vetores
 
 A lista será composta pelo encadeamento de nós (ou células), compostas por um dado e um apontador para o próximo nó. Todos os elementos devem ser do mesmo tipo.
 
-![](../assets/listas_encadeadas_16_59_54.png)
+![](/assets/listas_encadeadas_16_59_54.png)
 
 ```c
     typedef struct no {

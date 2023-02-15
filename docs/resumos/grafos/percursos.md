@@ -1,5 +1,5 @@
 
-## Percursos
+# Percursos
 
 ## Caminho
 
@@ -20,6 +20,14 @@ $k$ é o comprimento do caminho, a quantidade de vértices do caminho - 1.
 
 Um grafo pode ser dividido em várias "partes", chamadas de **componentes conexas**.
 
+<center>
+![](/assets/percursos_15_01_09.png)
+
+Figura 1: Componentes Conexas. Fonte: [1]
+</center>
+
 Um par de vértices está na mesma componente se, e somente se, existe caminho entre eles. Não há caminho entre vértices de componentes distintas.
 
 Um grafo **conexo** tem apenas uma componente conexa.
+
+

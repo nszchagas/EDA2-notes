@@ -16,7 +16,7 @@ Um **grafo** é um conjunto de objetos ligados, por **arestas**, entre si, chama
 
 <center>
 
-![](../assets/grafos_16_19_53.png)
+![](/assets/grafos_16_19_53.png)
 <div style="text-align: center">
 <p>
 Figura 2: Representação de um Grafo. Fonte:[1]
@@ -50,7 +50,7 @@ A matriz forma-se da seguinte maneira:
 
 <center>
 
-![](../assets/grafos_16_28_06.png)
+![](/assets/grafos_16_28_06.png)
 <div style="text-align: center">
 <p>
 Figura 3: Representação do grafo em uma matriz de adjacências. Fonte: [1]

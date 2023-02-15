@@ -32,7 +32,7 @@ Uma árvore binária tal que cada nó $r$ com subárvores esquerda $T_e$ e direi
 
 é uma **árvore binária de busca**.
 
-![](../assets/arvore_binaria_16_23_41.png)
+![](/assets/arvore_binaria_16_23_41.png)
 <div style="text-align: center">
 <p>
 Figura 1: Exemplo de árvore binária de busca. Fonte: [1]

@@ -57,8 +57,7 @@ nav:
   - Hash: resumos/hash.md
   - Árvores Binárias: resumos/arvores_binarias.md
   - Árvores Binárias de Busca: resumos/arvore_binaria_busca.md
-  - Fila de prioridade: resumos/fila_de_prioridade.md
-  - Heap: resumos/heap.md
+  - Fila de prioridade e Heap: resumos/fila_de_prioridade.md
   - Grafos:
       - Estrutura: resumos/grafos/estrutura.md
       - Percursos: resumos/grafos/percursos.md
